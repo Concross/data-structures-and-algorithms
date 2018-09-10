@@ -1,0 +1,23 @@
+{
+  "name": "data-structures-and-algorithms",
+  "version": "1.0.0",
+  "description": "A repo for explorations into data structures and algorithms",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest **/*.test.js",
+    "lint": "eslint **/.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Concross/data-structures-and-algorithms.git"
+  },
+  "author": "Connor Crossley <cacrossley22@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Concross/data-structures-and-algorithms/issues"
+  },
+  "homepage": "https://github.com/Concross/data-structures-and-algorithms#readme",
+  "dependencies": {
+    "jest": "^23.5.0"
+  }
+}
