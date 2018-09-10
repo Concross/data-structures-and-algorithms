@@ -3,17 +3,18 @@
 module.exports = exports = (arr, target) => {
   let begin = 0;
   let end = arr.length - 1;
-  console.log('called');
-  let mid = (begin + end) / 2;
-  while (arr[mid] !== target || begin < end) {
+  let mid;
+  while (begin <= end) {
+    mid = Math.floor((begin + end) / 2);
     if (target > arr[mid]) {
       begin = mid + 1;
     } else if (target < arr[mid]) {
       end = mid - 1;
     } else if (arr[begin] > target || target < arr[end]) {
-      return - 1;
+      return -1;
     } else {
       return mid;
     }
   }
+  return mid === target ? mid : -1;
 };
