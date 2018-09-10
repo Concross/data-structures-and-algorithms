@@ -51,28 +51,53 @@ describe('Binary search algorithm edge cases', () => {
 
 });
 
-// describe('Binary search algorithm benchmarks', () => {
-//   test('Benchmark for an array of 100, target value at last index', () => {
-//     let test = [...Array(100).keys()];
-//     let actual = binary_search(test, test[test.length - 1]);
-//     let expected = test.length - 1;
-//     expect(actual).toBe(expected);
+describe('Binary search algorithm benchmarks', () => {
+  test('Benchmark for an array of 100, target value at last index', () => {
+    let test = [...Array(100).keys()];
+    let actual = binary_search(test, test[test.length - 1]);
+    let expected = test.length - 1;
+    expect(actual).toBe(expected);
 
-//   });
+  });
 
-//   test('Benchmark for an array of 1000, target value at last index', () => {
-//     let test = [...Array(1000).keys()];
-//     let actual = binary_search(test, test[test.length - 1]);
-//     let expected = test.length - 1;
-//     expect(actual).toBe(expected);
+  test('Benchmark for an array of 1000, target value at last index', () => {
+    let test = [...Array(1000).keys()];
+    let actual = binary_search(test, test[test.length - 1]);
+    let expected = test.length - 1;
+    expect(actual).toBe(expected);
 
-//   });
+  });
 
-//   test('Benchmark for an array of 10000, target value at last index', () => {
-//     let test = [...Array(10000).keys()];
-//     let actual = binary_search(test, test[test.length - 1]);
-//     let expected = test.length - 1;
-//     expect(actual).toBe(expected);
+  test('Benchmark for an array of 10000, target value at last index', () => {
+    let test = [...Array(10000).keys()];
+    let actual = binary_search(test, test[test.length - 1]);
+    let expected = test.length - 1;
+    expect(actual).toBe(expected);
 
-//   });
-// });
+  });
+
+  test('Benchmark for an array of 100000, target value at last index', () => {
+    let test = [...Array(100000).keys()];
+    let actual = binary_search(test, test[test.length - 1]);
+    let expected = test.length - 1;
+    expect(actual).toBe(expected);
+
+  });
+
+  test('Benchmark for an array of 1,000,000: target value at last index', () => {
+    let test = [...Array(1000000).keys()];
+    let actual = binary_search(test, test[test.length - 1]);
+    let expected = test.length - 1;
+    expect(actual).toBe(expected);
+
+  });
+
+  test('Benchmark for an array of 10,000,000: target value at last index', () => {
+    let test = [...Array(10000000).keys()];
+    let actual = binary_search(test, test[test.length - 1]);
+    let expected = test.length - 1;
+    expect(actual).toBe(expected);
+
+  });
+
+});
