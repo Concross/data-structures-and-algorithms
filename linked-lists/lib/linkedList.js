@@ -9,13 +9,18 @@ class LinkedList {
   }
 
   append(value) {
-    let currentNode = this.head;
+    if (this.head) {
+      let currentNode = this.head;
 
-    while (currentNode.next) {
-      currentNode = currentNode.next;
+      while (currentNode.next) {
+        currentNode = currentNode.next;
+      }
+
+      currentNode.next = new Node(value, null);
+    } else {
+      this.head = new Node(value, null);
     }
 
-    currentNode.next = new Node(value, null);
     this.length++;
   }
 }

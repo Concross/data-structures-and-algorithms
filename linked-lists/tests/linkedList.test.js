@@ -20,11 +20,20 @@ describe('LinkedList class constructor tests', () => {
 
 describe('LinkedList class append method tests', () => {
   let linkedList = new LinkedList();
-  linkedList.head = new Node(1, null);
-  linkedList.length = 1;
+
+  test('should add head if list is empty', () => {
+    linkedList.append(1);
+    let actual = linkedList.head.value;
+    let expected = 1;
+    expect(actual).toBe(expected);
+
+    actual = linkedList.length;
+    expect(actual).toBe(expected);
+  });
 
   test('should add new node reference to head', () => {
     linkedList.append(2);
+    console.log(linkedList.head);
     let appendedNode = linkedList.head.next;
     let actual = appendedNode.value;
     let expected = 2;
