@@ -29,6 +29,21 @@ class LinkedList {
     this.length++;
   }
 
+  reverse() {
+    let curr = this.head;
+    let prev = null;
+    let next = curr.next;
+
+    while (next) {
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+      next = curr.next;
+
+    }
+    curr.next = prev;
+    this.head = curr;
+  }
 }
 
 module.exports = LinkedList;

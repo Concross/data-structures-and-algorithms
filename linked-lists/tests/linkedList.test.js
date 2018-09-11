@@ -59,11 +59,46 @@ describe('LinkedList class prepend method tests', () => {
     expect(actual).toBe(expected);
   });
 
+  test('should increment the length of the list', () => {
+    let actual = linkedList.length;
+    let expected = 2;
+    expect(actual).toBe(expected);
+  });
+
   test('should prepend a node to the head of an EMPTY list', () => {
     let emptyLinkedList = new LinkedList();
     emptyLinkedList.prepend(2);
     let actual = emptyLinkedList.head.value;
     let expected = 2;
+    expect(actual).toBe(expected);
+  });
+});
+
+describe('LinkedList class reverse method tests', () => {
+  let linkedList = new LinkedList();
+  for (let i = 0; i < 4; i++) {
+    linkedList.append(i);
+  }
+  linkedList.reverse();
+
+  test('should reverse a list', () => {
+    let actual = linkedList.head.value;
+    let expected = 3;
+    expect(actual).toBe(expected);
+
+    let next = linkedList.head.next;
+    actual = next.value;
+    expected = 2;
+    expect(actual).toBe(expected);
+
+    next = next.next;
+    actual = next.value;
+    expected = 1;
+    expect(actual).toBe(expected);
+
+    next = next.next;
+    actual = next.value;
+    expected = 0;
     expect(actual).toBe(expected);
   });
 });
