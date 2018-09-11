@@ -33,7 +33,6 @@ describe('LinkedList class append method tests', () => {
 
   test('should add new node reference to head', () => {
     linkedList.append(2);
-    console.log(linkedList.head);
     let appendedNode = linkedList.head.next;
     let actual = appendedNode.value;
     let expected = 2;
@@ -51,8 +50,22 @@ describe('LinkedList class append method tests', () => {
 
 describe('LinkedList class prepend method tests', () => {
   let linkedList = new LinkedList();
-  linkedList.head = new Node(1, null);
-  linkedList.length = 1;
+  linkedList.append(1);
+
+  test('should prepend a node to the head of the list', () => {
+    linkedList.prepend(2);
+    let actual = linkedList.head.value;
+    let expected = 2;
+    expect(actual).toBe(expected);
+  });
+
+  test('should prepend a node to the head of an EMPTY list', () => {
+    let emptyLinkedList = new LinkedList();
+    emptyLinkedList.prepend(2);
+    let actual = emptyLinkedList.head.value;
+    let expected = 2;
+    expect(actual).toBe(expected);
+  });
 });
 
 describe('LinkedList class behavior tests', () => {

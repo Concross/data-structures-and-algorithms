@@ -23,8 +23,12 @@ class LinkedList {
 
     this.length++;
   }
+
+  prepend(value) {
+    this.head = new Node(value, this.head);
+    this.length++;
+  }
+
 }
-
-
 
 module.exports = LinkedList;
