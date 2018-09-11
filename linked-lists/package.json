@@ -1,0 +1,23 @@
+{
+  "name": "linked-lists",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest **/*.test.js",
+    "lint": "eslint **/.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Concross/05-linked-list"
+  },
+  "author": "Connor Crossley <cacrossley22@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Concross/05-linked-list/issues"
+  },
+  "homepage": "https://github.com/Concross/05-linked-list#readme",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
