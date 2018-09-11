@@ -44,6 +44,14 @@ class LinkedList {
     curr.next = prev;
     this.head = curr;
   }
+
+  remove(offset) {
+    if (this.length) {
+      // remove here
+    } else {
+      throw new Error('No nodes to remove');
+    }
+  }
 }
 
 module.exports = LinkedList;

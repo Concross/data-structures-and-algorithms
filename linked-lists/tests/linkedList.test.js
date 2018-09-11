@@ -103,6 +103,29 @@ describe('LinkedList class reverse method tests', () => {
   });
 });
 
+describe('LinkedList class remove method tests', () => {
+  let linkedList = new LinkedList();
+
+  test('should throw an error if the linked list is empty', () => {
+    expect(() => {
+      linkedList.remove(0);
+    }).toThrowError();
+  });
+
+  test('should remove a node from the linked list', () => {
+    let linkedList = new LinkedList();
+    // there should be no .next reference to that node
+  });
+
+  test('should return the node getting removed', () => {
+    // expect the returned value to be the value of the item we expect to remove
+  });
+
+  test('should decrement the length property of the linked list', () => {
+    // obvious what to expect here
+  });
+});
+
 describe('LinkedList class behavior tests', () => {
   let linkedList = new LinkedList();
 
