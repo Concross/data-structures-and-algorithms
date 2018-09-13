@@ -152,16 +152,27 @@ describe('LinkedList class serialize method tests', () => {
 });
 
 describe('LinkedList class deserialize method tests', () => {
-  test('should return a linked list object', () => {
+  test('should return a new instance of LinkedList', () => {
+    let linkedList = new LinkedList();
+    linkedList.append(2);
+    linkedList.append(3);
+    let stringyList = linkedList.serialize();
+    let actual = LinkedList.deserialize(stringyList);
+
+    expect(actual).toBeInstanceOf(LinkedList);
+  });
+
+  test('should return correct head and tail', () => {
     let linkedList = new LinkedList();
     linkedList.append(1);
-    console.log(linkedList);
-    let stringyLinkedList = linkedList.serialize();
-    console.log(stringyLinkedList);
-    let actual = LinkedList.deserialize(stringyLinkedList);
-    console.log(actual);
-    expect(actual).toBeInstanceOf(LinkedList);
-    expect(actual.head.value).toBe(1);
+    linkedList.append(2);
+    let stringyList = linkedList.serialize();
+    let actual = LinkedList.deserialize(stringyList);
+    let expected = 1;
+
+    expect(actual.head.value).toBe(expected);
+    expected = 2;
+    expect(actual.tail.value).toBe(expected);
   });
 });
 

@@ -3,10 +3,18 @@
 const Node = require('./node');
 
 class LinkedList {
-  constructor(linkedList) {
-    this.head = linkedList.head || null;
-    this.tail = linkedList.tail || null;
-    this.length = linkedList.length || 0;
+  constructor(listObject) {
+
+    if (listObject) {
+      this.head = listObject.head;
+      this.tail = listObject.tail;
+      this.length = listObject.length;
+
+    } else {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    }
   }
 
   // append is O(n)
@@ -73,10 +81,11 @@ class LinkedList {
     return JSON.stringify(this);
   }
 
-  // deserialize is O(?)
-  static deserialize(linkedList) {
-    return new LinkedList(JSON.parse(linkedList));
+  static deserialize(listObject) {
+    let newList = JSON.parse(listObject);
+    return new LinkedList(newList);
   }
+
 }
 
 module.exports = LinkedList;
