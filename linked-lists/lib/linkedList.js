@@ -63,6 +63,11 @@ class LinkedList {
       throw new Error('No nodes to remove');
     }
   }
+
+  serialize() {
+    let stringifiedList = JSON.stringify(this);
+    return stringifiedList;
+  }
 }
 
 module.exports = LinkedList;

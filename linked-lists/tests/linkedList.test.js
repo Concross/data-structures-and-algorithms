@@ -141,6 +141,16 @@ describe('LinkedList class remove method tests', () => {
   });
 });
 
+describe('LinkedList class serialize method tests', () => {
+  test('should return a buffer', () => {
+    let linkedList = new LinkedList();
+    linkedList.append(1);
+
+    let actual = linkedList.serialize();
+    expect(typeof actual).toBe('string');
+  });
+});
+
 describe('LinkedList class behavior tests', () => {
   let linkedList = new LinkedList();
 
