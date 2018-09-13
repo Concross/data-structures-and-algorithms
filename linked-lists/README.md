@@ -11,4 +11,6 @@ Data structure for a singly-linked list
 - `reverse()` reverses the order of the nodes in the linked list
 - `remove(offset)` removes a node from the linked list
 - `serialize()` stringifies the linked list 
-- `deserialize()` creates a new LinkedList from a stringified linked list object
+- `LinkedList.deserialize(serializedList)` creates a new LinkedList from a stringified linked list object
+- `insertBefore(refVal, newVal)` inserts a new Node with value `newVal` before Node with `refVal`
+- `insertAfter(refVal, newVal)` inserts a new Node with value `newVal` after Node with `refVal`

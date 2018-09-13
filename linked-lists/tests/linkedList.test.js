@@ -176,6 +176,58 @@ describe('LinkedList class deserialize method tests', () => {
   });
 });
 
+describe('LinkedList class insertBefore method tests', () => {
+  let linkedList = new LinkedList();
+  linkedList.append(1);
+  linkedList.append(2);
+  linkedList.insertBefore(2, 5);
+
+  test('should increase the length property by one', () => {
+    let actual = linkedList.length;
+    let expected = 3;
+    expect(actual).toBe(expected);
+  });
+
+  test('inserted node should have proper next value', () => {
+    console.log(linkedList);
+    let actual = linkedList.head.next.next.value;
+    let expected = 2;
+    expect(actual).toBe(expected);
+  });
+
+  test('previous node should have reference to new node', () => {
+    let actual = linkedList.head.next.value;
+    let expected = 5;
+    expect(actual).toBe(expected);
+  });
+});
+
+describe('LinkedList class insertAfter method tests', () => {
+  let linkedList = new LinkedList();
+  linkedList.append(1);
+  linkedList.append(2);
+  linkedList.append(3);
+  linkedList.insertAfter(2, 5);
+
+  test('should increase the length property by one', () => {
+    let actual = linkedList.length;
+    let expected = 4;
+    expect(actual).toBe(expected);
+  });
+
+  test('inserted node should have proper next value', () => {
+    let actual = linkedList.head.next.next.next.value;
+    let expected = 3;
+    expect(actual).toBe(expected);
+  });
+
+  test('previous node should have reference to new node', () => {
+    let actual = linkedList.head.next.next.value;
+    let expected = 5;
+    expect(actual).toBe(expected);
+  });
+});
+
 describe('LinkedList class behavior tests', () => {
   let linkedList = new LinkedList();
 
