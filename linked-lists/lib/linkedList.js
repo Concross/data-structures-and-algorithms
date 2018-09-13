@@ -76,6 +76,21 @@ class LinkedList {
     }
   }
 
+  insertBefore(referenceVal, newVal) {
+    if (referenceVal === 0) {
+      this.prepend(newVal);
+    } else {
+      let curr = this.head;
+      let prev = null;
+      while (referenceVal !== curr.value) {
+        prev = curr;
+        curr = curr.next;
+      }
+      prev.next = new Node(newVal, curr);
+    }
+    this.length++;
+  }
+
   // serialize is O(1)
   serialize() {
     return JSON.stringify(this);
