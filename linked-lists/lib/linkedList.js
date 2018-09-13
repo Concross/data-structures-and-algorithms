@@ -3,12 +3,13 @@
 const Node = require('./node');
 
 class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
+  constructor(linkedList) {
+    this.head = linkedList.head || null;
+    this.tail = linkedList.tail || null;
+    this.length = linkedList.length || 0;
   }
 
+  // append is O(n)
   append(value) {
     if (this.tail) {
       this.tail = this.tail.next = new Node(value, null);
@@ -19,11 +20,13 @@ class LinkedList {
     this.length++;
   }
 
+  // prepend is O(n)
   prepend(value) {
     this.head = new Node(value, this.head);
     this.length++;
   }
 
+  // reverse is O(n)
   reverse() {
     let curr = this.head;
     let prev = null;
@@ -40,6 +43,7 @@ class LinkedList {
     this.head = curr;
   }
 
+  // remove is O(n)
   remove(offset) {
     if (offset === 0 && this.length) {
       let node = this.head;
@@ -64,9 +68,14 @@ class LinkedList {
     }
   }
 
+  // serialize is O(1)
   serialize() {
-    let stringifiedList = JSON.stringify(this);
-    return stringifiedList;
+    return JSON.stringify(this);
+  }
+
+  // deserialize is O(?)
+  static deserialize(linkedList) {
+    return new LinkedList(JSON.parse(linkedList));
   }
 }
 
