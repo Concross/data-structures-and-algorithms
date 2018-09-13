@@ -76,6 +76,7 @@ class LinkedList {
     }
   }
 
+  // insertBefore() has Big O(n)
   insertBefore(referenceVal, newVal) {
     if (referenceVal === 0) {
       this.prepend(newVal);
@@ -95,6 +96,7 @@ class LinkedList {
     this.length++;
   }
 
+  // insertAfter() has Big O(n)
   insertAfter(referenceVal, newVal) {
     let curr = this.head;
 
