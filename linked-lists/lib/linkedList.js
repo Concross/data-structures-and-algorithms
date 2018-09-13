@@ -81,6 +81,7 @@ class LinkedList {
     return JSON.stringify(this);
   }
 
+  // deserialize is O(1)
   static deserialize(listObject) {
     let newList = JSON.parse(listObject);
     return new LinkedList(newList);
