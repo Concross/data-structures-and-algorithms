@@ -189,7 +189,6 @@ describe('LinkedList class insertBefore method tests', () => {
   });
 
   test('inserted node should have proper next value', () => {
-    console.log(linkedList);
     let actual = linkedList.head.next.next.value;
     let expected = 2;
     expect(actual).toBe(expected);
@@ -224,6 +223,18 @@ describe('LinkedList class insertAfter method tests', () => {
   test('previous node should have reference to new node', () => {
     let actual = linkedList.head.next.next.value;
     let expected = 5;
+    expect(actual).toBe(expected);
+  });
+});
+
+describe('LinkedList class kthFromEnd method tests', () => {
+  let linkedList = new LinkedList();
+  linkedList.append(1);
+  linkedList.append(2);
+
+  test('should return value of node at k-offset from the end', () => {
+    let actual = linkedList.kthFromEnd(1);
+    let expected = 1;
     expect(actual).toBe(expected);
   });
 });

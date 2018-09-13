@@ -108,6 +108,19 @@ class LinkedList {
     this.length++;
   }
 
+  kthFromEnd(k) {
+    if (k > this.length - 1) {
+      throw new Error('out of bounds');
+    }
+
+    let curr = this.head;
+    for (let i = 0; i < this.length - (k + 1); i++) {
+      curr = curr.next;
+    }
+
+    return curr.value;
+  }
+
   // serialize is O(1)
   serialize() {
     return JSON.stringify(this);
