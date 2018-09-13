@@ -5,20 +5,15 @@ const Node = require('./node');
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
     this.length = 0;
   }
 
   append(value) {
-    if (this.head) {
-      let currentNode = this.head;
-
-      while (currentNode.next) {
-        currentNode = currentNode.next;
-      }
-
-      currentNode.next = new Node(value, null);
+    if (this.tail) {
+      this.tail = this.tail.next = new Node(value, null);
     } else {
-      this.head = new Node(value, null);
+      this.head = this.tail = new Node(value, null);
     }
 
     this.length++;
@@ -46,8 +41,24 @@ class LinkedList {
   }
 
   remove(offset) {
-    if (this.length) {
-      // remove here
+    if (offset === 0 && this.length) {
+      let node = this.head;
+      this.head = null;
+      this.length--;
+      return node;
+
+    } else if (this.length) {
+      let curr = this.head;
+      for (let i = 0; i < offset - 1; i++) {
+        curr = curr.next;
+      }
+
+      let node = curr.next;
+      curr.next = node.next;
+      node.next = null;
+      this.length--;
+      return node;
+
     } else {
       throw new Error('No nodes to remove');
     }

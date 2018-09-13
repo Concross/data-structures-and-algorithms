@@ -104,9 +104,9 @@ describe('LinkedList class reverse method tests', () => {
 });
 
 describe('LinkedList class remove method tests', () => {
-  let linkedList = new LinkedList();
 
   test('should throw an error if the linked list is empty', () => {
+    let linkedList = new LinkedList();
     expect(() => {
       linkedList.remove(0);
     }).toThrowError();
@@ -114,15 +114,30 @@ describe('LinkedList class remove method tests', () => {
 
   test('should remove a node from the linked list', () => {
     let linkedList = new LinkedList();
-    // there should be no .next reference to that node
+    linkedList.append(7);
+    linkedList.remove(0);
+    let actual = linkedList.head;
+
+    expect(actual).toBeNull();
   });
 
   test('should return the node getting removed', () => {
-    // expect the returned value to be the value of the item we expect to remove
+    let linkedList = new LinkedList();
+    linkedList.append(10);
+    let actual = linkedList.remove(0);
+
+    expect(actual.value).toBe(10);
   });
 
   test('should decrement the length property of the linked list', () => {
-    // obvious what to expect here
+    let linkedList = new LinkedList();
+    linkedList.append(1);
+    linkedList.append(2);
+    linkedList.remove(1);
+
+    let actual = linkedList.length;
+    let expected = 1;
+    expect(actual).toBe(expected);
   });
 });
 
