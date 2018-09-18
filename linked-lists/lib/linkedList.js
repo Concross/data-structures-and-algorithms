@@ -63,7 +63,7 @@ class LinkedList {
   remove(offset) {
     if (offset === 0 && this.length) {
       let node = this.head;
-      this.head = null;
+      this.head = this.head.next || null;
       this.length--;
       return node;
 
@@ -138,6 +138,26 @@ class LinkedList {
   static deserialize(listObject) {
     let newList = JSON.parse(listObject);
     return new LinkedList(newList);
+  }
+
+  static mergeList(list1, list2) {
+    let startLength = list1.length;
+    let i = 0;
+
+    let current = list1.head;
+    while (i < startLength && list2.head !== null) {
+      list1.insertAfter(current.value, list2.head.value);
+      list1.tail = list2.remove(0);
+      current = current.next.next;
+      i++;
+    }
+
+    while (list2.head) {
+      list1.tail = list2.remove(0);
+      list1.append(list1.tail);
+    }
+
+    return list1.head;
   }
 
 }
