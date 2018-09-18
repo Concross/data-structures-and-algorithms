@@ -21,6 +21,15 @@ describe('LinkedList class constructor tests', () => {
 describe('LinkedList class append method tests', () => {
   let linkedList = new LinkedList();
 
+  test('should throw error if input cannot be parsed into a number', () => {
+    let badArgs = [null, undefined, true, 'two', [], {}];
+    badArgs.forEach(arg => {
+      expect(() => {
+        linkedList.append(arg);
+      }).toThrowError(TypeError);
+    });
+  });
+
   test('should add head if list is empty', () => {
     linkedList.append(1);
     let actual = linkedList.head.value;

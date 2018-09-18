@@ -5,20 +5,28 @@ const Node = require('./node');
 class LinkedList {
   constructor(listObject) {
 
-    if (listObject) {
-      this.head = listObject.head;
-      this.tail = listObject.tail;
-      this.length = listObject.length;
+    try {
+      if (listObject) {
+        this.head = listObject.head;
+        this.tail = listObject.tail;
+        this.length = listObject.length;
 
-    } else {
-      this.head = null;
-      this.tail = null;
-      this.length = 0;
+      } else {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+      }
+    } catch (err) {
+      throw new Error('LinkedList constructor unable to instantiate new LinkedList object');
     }
   }
 
-  // append is O(n)
+  // append is O(1)
   append(value) {
+
+    if (typeof value !== 'number') {
+      throw new TypeError('append(val) requires the parameter to be an integer');
+    }
     if (this.tail) {
       this.tail = this.tail.next = new Node(value, null);
     } else {
@@ -28,7 +36,7 @@ class LinkedList {
     this.length++;
   }
 
-  // prepend is O(n)
+  // prepend is O(1)
   prepend(value) {
     this.head = new Node(value, this.head);
     this.length++;
