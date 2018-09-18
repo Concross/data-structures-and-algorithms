@@ -14,3 +14,4 @@ Data structure for a singly-linked list
 - `LinkedList.deserialize(serializedList)` creates a new LinkedList from a stringified linked list object
 - `insertBefore(refVal, newVal)` inserts a new Node with value `newVal` before Node with `refVal`
 - `insertAfter(refVal, newVal)` inserts a new Node with value `newVal` after Node with `refVal`
+- `kthFromEnd(k)` returns the value of a node k-offset from the end of the list
