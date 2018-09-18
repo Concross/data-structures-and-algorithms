@@ -3,6 +3,9 @@
 const LinkedList = require('../lib/linkedList');
 const Node = require('../lib/node');
 
+/***********************************
+*     Constructor Tests            *
+************************************/
 describe('LinkedList class constructor tests', () => {
   let linkedList = new LinkedList();
 
@@ -18,6 +21,9 @@ describe('LinkedList class constructor tests', () => {
   });
 });
 
+/***********************************
+*     Append Method Tests          *
+************************************/
 describe('LinkedList class append method tests', () => {
   let linkedList = new LinkedList();
 
@@ -57,6 +63,9 @@ describe('LinkedList class append method tests', () => {
   });
 });
 
+/***********************************
+*     Prepend Method Tests         *
+************************************/
 describe('LinkedList class prepend method tests', () => {
   let linkedList = new LinkedList();
   linkedList.append(1);
@@ -83,6 +92,9 @@ describe('LinkedList class prepend method tests', () => {
   });
 });
 
+/***********************************
+*     Reverse Method Tests         *
+************************************/
 describe('LinkedList class reverse method tests', () => {
   let linkedList = new LinkedList();
   for (let i = 0; i < 4; i++) {
@@ -112,6 +124,9 @@ describe('LinkedList class reverse method tests', () => {
   });
 });
 
+/***********************************
+*     Remove Method Tests          *
+************************************/
 describe('LinkedList class remove method tests', () => {
 
   test('should throw an error if the linked list is empty', () => {
@@ -150,6 +165,9 @@ describe('LinkedList class remove method tests', () => {
   });
 });
 
+/***********************************
+*     Serialize Method Tests       *
+************************************/
 describe('LinkedList class serialize method tests', () => {
   test('should return a buffer', () => {
     let linkedList = new LinkedList();
@@ -160,6 +178,9 @@ describe('LinkedList class serialize method tests', () => {
   });
 });
 
+/***********************************
+*     Deserialize Method Tests     *
+************************************/
 describe('LinkedList class deserialize method tests', () => {
   test('should return a new instance of LinkedList', () => {
     let linkedList = new LinkedList();
@@ -185,6 +206,9 @@ describe('LinkedList class deserialize method tests', () => {
   });
 });
 
+/***********************************
+*     insertBefore Method Tests    *
+************************************/
 describe('LinkedList class insertBefore method tests', () => {
   let linkedList = new LinkedList();
   linkedList.append(1);
@@ -210,6 +234,9 @@ describe('LinkedList class insertBefore method tests', () => {
   });
 });
 
+/***********************************
+*     insertAfter Method Tests     *
+************************************/
 describe('LinkedList class insertAfter method tests', () => {
   let linkedList = new LinkedList();
   linkedList.append(1);
@@ -236,6 +263,9 @@ describe('LinkedList class insertAfter method tests', () => {
   });
 });
 
+/***********************************
+*     kthFromEnd Method Tests      *
+************************************/
 describe('LinkedList class kthFromEnd method tests', () => {
   let linkedList = new LinkedList();
   linkedList.append(1);
@@ -248,6 +278,30 @@ describe('LinkedList class kthFromEnd method tests', () => {
   });
 });
 
+/***********************************
+*     mergeLists Tests             *
+************************************/
+describe('LinkedList static method mergeLists tests', () => {
+  it('should zip second list into first with values alternating', () => {
+    let list1 = new LinkedList();
+    let list2 = new LinkedList();
+    for (let i = 0; i < 3; i++) {
+      list1.append(i);
+      list2.append(i + 3);
+    }
+    LinkedList.mergeList(list1, list2);
+    let actual = list1.head.next.value;
+    let expected = 3;
+    expect(actual).toBe(expected);
+    actual = list1.tail.value;
+    expected = 5;
+    expect(actual).toBe(expected);
+  });
+});
+
+/***********************************
+*     Class Behavior Tests     *
+************************************/
 describe('LinkedList class behavior tests', () => {
   let linkedList = new LinkedList();
 
