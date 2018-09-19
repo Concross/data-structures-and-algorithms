@@ -67,3 +67,45 @@ describe('Queue enqueue(val) tests', () => {
     expect(actual).toBe(expected);
   });
 });
+
+/***********************************
+*     DEQUEUE     *
+************************************/
+describe('Queue dequeue() tests', () => {
+  it('should return undefined for an empty queue', () => {
+    let emptyQueue = new Queue();
+    let actual = emptyQueue.dequeue();
+    expect(actual).toBeUndefined();
+  });
+
+  it('should return the value in the front of the queue', () => {
+    let queue = new Queue();
+    queue.enqueue(1);
+    let actual = queue.dequeue();
+    let expected = 1;
+    expect(actual).toBe(expected);
+  });
+
+  it('should decrement the size of the queue', () => {
+    let queue = new Queue();
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.dequeue();
+
+    let actual = queue.size;
+    let expected = 1;
+    expect(actual).toBe(expected);
+  });
+
+  it('should dequeue values from the queue in the proper order', () => {
+    let queue = new Queue();
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+
+    expect(queue.dequeue()).toBe(1);
+    expect(queue.dequeue()).toBe(2);
+    expect(queue.dequeue()).toBe(3);
+    expect(queue.dequeue()).toBeUndefined();
+  });
+});

@@ -14,7 +14,14 @@ class Queue {
     }
     this.storage.append(value);
     this.size++;
+  }
 
+  dequeue() {
+    if (this.size) {
+      let frontValue = this.storage.remove(0).value;
+      this.size--;
+      return frontValue;
+    }
   }
 }
 
