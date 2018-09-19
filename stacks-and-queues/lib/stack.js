@@ -16,6 +16,14 @@ class Stack {
     this.storage.prepend(value);
     this.size++;
   }
+
+  pop() {
+    if (this.size) {
+      let topValue = this.storage.remove(0).value;
+      this.size--;
+      return topValue;
+    }
+  }
 }
 
 module.exports = Stack;

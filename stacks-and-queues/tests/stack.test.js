@@ -23,6 +23,9 @@ describe('Stack constructor tests', () => {
   });
 });
 
+/***********************************
+*     PUSH     *
+************************************/
 describe('Stack push tests', () => {
   it('should throw an error if no value is provided', () => {
     let stack = new Stack();
@@ -64,5 +67,47 @@ describe('Stack push tests', () => {
     let actual = stack.size;
     let expected = 3;
     expect(actual).toBe(expected);
+  });
+});
+
+/***********************************
+*     POP     *
+************************************/
+describe('Stack pop test', () => {
+  it('should return undefined for an empty stack', () => {
+    let emptyStack = new Stack();
+    let actual = emptyStack.pop();
+    expect(actual).toBeUndefined();
+  });
+
+  it('should return the value off the top of the stack', () => {
+    let stack = new Stack();
+    stack.push(1);
+    let actual = stack.pop();
+    let expected = 1;
+    expect(actual).toBe(expected);
+  });
+
+  it('should decrement the size of the stack', () => {
+    let stack = new Stack();
+    stack.push(1);
+    stack.push(2);
+    stack.pop();
+
+    let actual = stack.size;
+    let expected = 1;
+    expect(actual).toBe(expected);
+  });
+
+  it('should pop values off the stack in the proper order', () => {
+    let stack = new Stack();
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    expect(stack.pop()).toBe(3);
+    expect(stack.pop()).toBe(2);
+    expect(stack.pop()).toBe(1);
+    expect(stack.pop()).toBeUndefined();
   });
 });
