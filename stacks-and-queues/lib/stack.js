@@ -12,6 +12,9 @@ class Stack {
     if (!value) {
       throw new Error('InputError: <Stack>.push() requires a value');
     }
+
+    this.storage.prepend(value);
+    this.size++;
   }
 }
 

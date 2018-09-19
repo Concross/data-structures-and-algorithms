@@ -30,4 +30,39 @@ describe('Stack push tests', () => {
       stack.push();
     }).toThrowError('InputError: <Stack>.push() requires a value');
   });
+
+  it('should succesfully push an item to the top of an empty stack', () => {
+    let stack = new Stack();
+    stack.push(1);
+    let actual = stack.storage.head.value;
+    let expected = 1;
+
+    expect(actual).toBe(expected);
+  });
+
+  it('should push an item to the top of a stack of any size, maintaining head and tail', () => {
+    let stack = new Stack();
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    let top = stack.storage.head.value;
+    let expected = 3;
+    expect(top).toBe(expected);
+
+    let bottom = stack.storage.tail.value;
+    expected = 1;
+    expect(bottom).toBe(expected);
+  });
+
+  it('should increment the size of the stack', () => {
+    let stack = new Stack();
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    let actual = stack.size;
+    let expected = 3;
+    expect(actual).toBe(expected);
+  });
 });
