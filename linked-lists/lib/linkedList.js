@@ -2,6 +2,9 @@
 
 const Node = require('./node');
 
+const _removeFirst = Symbol('removeFirst');
+const _removeLast = Symbol('removeLast');
+
 class LinkedList {
   constructor(listObject) {
 
@@ -27,6 +30,7 @@ class LinkedList {
     if (typeof value !== 'number') {
       throw new TypeError('append(val) requires the parameter to be an integer');
     }
+
     if (this.tail) {
       this.tail = this.tail.next = new Node(value, null);
     } else {
@@ -61,14 +65,18 @@ class LinkedList {
 
   // remove is O(n)
   remove(offset) {
-    if (offset === 0 && this.length) {
-      let node = this.head;
-      this.head = this.head.next || null;
-      this.length--;
-      return node;
+    if (!this.length) {
+      throw new Error('No nodes to remove');
 
-    } else if (this.length) {
+    } else if (offset === 0) {
+      return this[_removeFirst]();
+
+    } else if (offset === this.length - 1) {
+      return this[_removeLast]();
+
+    } else {
       let curr = this.head;
+
       for (let i = 0; i < offset - 1; i++) {
         curr = curr.next;
       }
@@ -77,11 +85,33 @@ class LinkedList {
       curr.next = node.next;
       node.next = null;
       this.length--;
-      return node;
 
-    } else {
-      throw new Error('No nodes to remove');
+      return node;
     }
+  }
+
+  // private class methods for remove, using Symbols!
+  [_removeFirst]() {
+    let node = this.head;
+    this.head = this.head.next || null;
+    this.length--;
+    return node;
+  }
+
+  [_removeLast]() {
+    let curr = this.head;
+    let prev = null;
+
+    while (curr.next) {
+      prev = curr;
+      curr = curr.next;
+    }
+
+    let node = curr;
+    prev.next = null;
+    this.tail = prev;
+    this.length--;
+    return node;
   }
 
   // insertBefore() has Big O(n)
@@ -147,14 +177,14 @@ class LinkedList {
     let current = list1.head;
     while (i < startLength && list2.head !== null) {
       list1.insertAfter(current.value, list2.head.value);
-      list1.tail = list2.remove(0);
+      list1.tail = list2.remove(0); // fails test for shorter first list here
       current = current.next.next;
       i++;
     }
 
     while (list2.head) {
       list1.tail = list2.remove(0);
-      list1.append(list1.tail);
+      list1.append(list1.tail.value);
     }
 
     return list1.head;

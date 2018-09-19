@@ -297,6 +297,39 @@ describe('LinkedList static method mergeLists tests', () => {
     expected = 5;
     expect(actual).toBe(expected);
   });
+
+  it('should be able to handle a longer second list', () => {
+    let list1 = new LinkedList();
+    let list2 = new LinkedList();
+    for (let i = 0; i < 3; i++) {
+      list1.append(i);
+      list2.append(i + 3);
+    }
+    list2.append(6);
+    list2.append(7);
+
+    LinkedList.mergeList(list1, list2);
+    let actual = list1.tail.value;
+    let expected = 7;
+
+    expect(actual).toBe(expected);
+  });
+
+  it('should be able to handle a longer first list', () => {
+    let list1 = new LinkedList();
+    let list2 = new LinkedList();
+    for (let i = 0; i < 3; i++) {
+      list1.append(i);
+      list2.append(i + 3);
+    }
+    list1.append(6);
+    list1.append(7);
+
+    LinkedList.mergeList(list1, list2);
+    let actual = list1.tail.value;
+    let expected = 7;
+    expect(actual).toBe(expected);
+  });
 });
 
 /***********************************
