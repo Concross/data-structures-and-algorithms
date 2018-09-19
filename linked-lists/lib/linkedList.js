@@ -171,20 +171,18 @@ class LinkedList {
   }
 
   static mergeList(list1, list2) {
-    let startLength = list1.length;
-    let i = 0;
 
-    let current = list1.head;
-    while (i < startLength && list2.head !== null) {
-      list1.insertAfter(current.value, list2.head.value);
-      list1.tail = list2.remove(0); // fails test for shorter first list here
-      current = current.next.next;
-      i++;
+    if (!list1.length) { return list2.head; }
+    if (!list2.length) { return list1.head; }
+
+    let curr = list1.head.next;
+    while (curr && list2.length) {
+      list1.insertBefore(curr.value, list2.remove(0).value);
+      curr = curr.next;
     }
 
-    while (list2.head) {
-      list1.tail = list2.remove(0);
-      list1.append(list1.tail.value);
+    while (list2.length) {
+      list1.append(list2.remove(0).value);
     }
 
     return list1.head;
