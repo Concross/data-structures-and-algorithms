@@ -43,6 +43,9 @@ class LinkedList {
   // prepend is O(1)
   prepend(value) {
     this.head = new Node(value, this.head);
+    if (!this.tail) {
+      this.tail = this.head;
+    }
     this.length++;
   }
 
