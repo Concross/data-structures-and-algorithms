@@ -109,3 +109,44 @@ describe('Queue dequeue() tests', () => {
     expect(queue.dequeue()).toBeUndefined();
   });
 });
+
+/***********************************
+*     SERIALIZE/DESERIALIZE     *
+************************************/
+describe('Queue serialize tests', () => {
+  it('should return a string', () => {
+    let queue = new Queue();
+    let actual = queue.serialize();
+    expect(typeof actual).toBe('string');
+  });
+});
+
+describe('Queue deserialize tests', () => {
+  it('should create an instance of a Queue', () => {
+    let stringyQueue = new Queue();
+    stringyQueue = stringyQueue.serialize();
+    let queue = Queue.deserialize(stringyQueue);
+    expect(queue).toBeInstanceOf(Queue);
+  });
+
+  it('should have the same values and methods as before', () => {
+    let stringyQueue = new Queue();
+    stringyQueue.enqueue(1);
+    stringyQueue.enqueue(2);
+    stringyQueue.enqueue(3);
+    stringyQueue = stringyQueue.serialize();
+
+    let queue = Queue.deserialize(stringyQueue);
+    expect(queue.dequeue()).toBe(1);
+    expect(queue.dequeue()).toBe(2);
+    expect(queue.dequeue()).toBe(3);
+  });
+
+  it('should maintain storage as a LinkedList', () => {
+    let stringyQueue = new Queue();
+    stringyQueue = stringyQueue.serialize();
+    let queue = Queue.deserialize(stringyQueue);
+
+    expect(queue.storage).toBeInstanceOf(LinkedList);
+  });
+});

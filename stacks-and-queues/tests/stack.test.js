@@ -112,6 +112,9 @@ describe('Stack pop test', () => {
   });
 });
 
+/***********************************
+*     SERIALIZE/DESERIALIZE     *
+************************************/
 describe('Stack serialize tests', () => {
   it('should return a string', () => {
     let stack = new Stack();

@@ -3,9 +3,15 @@
 const LinkedList = require('../../linked-lists/lib/linkedList');
 
 class Queue {
-  constructor() {
-    this.size = 0;
-    this.storage = new LinkedList();
+  constructor(serializedQueue) {
+    if (serializedQueue) {
+      this.size = serializedQueue.size;
+      this.storage = serializedQueue.storage;
+
+    } else {
+      this.size = 0;
+      this.storage = new LinkedList();
+    }
   }
 
   enqueue(value) {
@@ -22,6 +28,16 @@ class Queue {
       this.size--;
       return frontValue;
     }
+  }
+
+  serialize() {
+    return JSON.stringify(this);
+  }
+
+  static deserialize(stringyQueue) {
+    let queue = JSON.parse(stringyQueue);
+    queue.storage = new LinkedList(queue.storage);
+    return new Queue(queue);
   }
 }
 
