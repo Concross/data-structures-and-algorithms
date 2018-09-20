@@ -111,3 +111,41 @@ describe('Stack pop test', () => {
     expect(stack.pop()).toBeUndefined();
   });
 });
+
+describe('Stack serialize tests', () => {
+  it('should return a string', () => {
+    let stack = new Stack();
+    let actual = stack.serialize();
+    expect(typeof actual).toBe('string');
+  });
+});
+
+describe('Stack deserialize tests', () => {
+  it('should create an instance of a Stack', () => {
+    let stringyStack = new Stack();
+    stringyStack = stringyStack.serialize();
+    let stack = Stack.deserialize(stringyStack);
+    expect(stack).toBeInstanceOf(Stack);
+  });
+
+  it('should have the same values and methods as before', () => {
+    let stringyStack = new Stack();
+    stringyStack.push(1);
+    stringyStack.push(2);
+    stringyStack.push(3);
+    stringyStack = stringyStack.serialize();
+
+    let stack = Stack.deserialize(stringyStack);
+    expect(stack.pop()).toBe(3);
+    expect(stack.pop()).toBe(2);
+    expect(stack.pop()).toBe(1);
+  });
+
+  it('should maintain storage as a LinkedList', () => {
+    let stringyStack = new Stack();
+    stringyStack = stringyStack.serialize();
+    let stack = Stack.deserialize(stringyStack);
+
+    expect(stack.storage).toBeInstanceOf(LinkedList);
+  });
+});

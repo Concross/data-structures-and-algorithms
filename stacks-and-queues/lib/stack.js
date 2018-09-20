@@ -3,9 +3,16 @@
 const LinkedList = require('../../linked-lists/lib/linkedList');
 
 class Stack {
-  constructor() {
-    this.size = 0;
-    this.storage = new LinkedList();
+  constructor(serializedStack) {
+    if (serializedStack) {
+      this.storage = serializedStack.storage;
+      this.size = serializedStack.storage.length;
+
+    } else {
+      this.size = 0;
+      this.storage = new LinkedList();
+
+    }
   }
 
   push(value) {
@@ -23,6 +30,16 @@ class Stack {
       this.size--;
       return topValue;
     }
+  }
+
+  serialize() {
+    return JSON.stringify(this);
+  }
+
+  static deserialize(stringyStack) {
+    let stack = JSON.parse(stringyStack);
+    stack.storage = new LinkedList(stack.storage);
+    return new Stack(stack);
   }
 }
 
