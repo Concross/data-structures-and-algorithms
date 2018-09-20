@@ -42,10 +42,7 @@ describe('Queue enqueue(val) tests', () => {
   });
 
   it('should enqueue an item into a queue of any size, maintaining storage head and tail', () => {
-    let queue = new Queue();
-    queue.enqueue(1);
-    queue.enqueue(2);
-    queue.enqueue(3);
+    let queue = _threeItemQueue();
 
     let front = queue.storage.head.value;
     let expected = 1;
@@ -57,10 +54,7 @@ describe('Queue enqueue(val) tests', () => {
   });
 
   it('should increment the size of the queue', () => {
-    let queue = new Queue();
-    queue.enqueue(1);
-    queue.enqueue(2);
-    queue.enqueue(3);
+    let queue = _threeItemQueue();
 
     let actual = queue.size;
     let expected = 3;
@@ -98,10 +92,7 @@ describe('Queue dequeue() tests', () => {
   });
 
   it('should dequeue values from the queue in the proper order', () => {
-    let queue = new Queue();
-    queue.enqueue(1);
-    queue.enqueue(2);
-    queue.enqueue(3);
+    let queue = _threeItemQueue();
 
     expect(queue.dequeue()).toBe(1);
     expect(queue.dequeue()).toBe(2);
@@ -130,16 +121,14 @@ describe('Queue deserialize tests', () => {
   });
 
   it('should have the same values and methods as before', () => {
-    let stringyQueue = new Queue();
-    stringyQueue.enqueue(1);
-    stringyQueue.enqueue(2);
-    stringyQueue.enqueue(3);
+    let stringyQueue = _threeItemQueue();
     stringyQueue = stringyQueue.serialize();
 
     let queue = Queue.deserialize(stringyQueue);
     expect(queue.dequeue()).toBe(1);
     expect(queue.dequeue()).toBe(2);
     expect(queue.dequeue()).toBe(3);
+    expect(queue.dequeue()).toBeUndefined();
   });
 
   it('should maintain storage as a LinkedList', () => {
@@ -150,3 +139,12 @@ describe('Queue deserialize tests', () => {
     expect(queue.storage).toBeInstanceOf(LinkedList);
   });
 });
+
+const _threeItemQueue = () => {
+  let queue = new Queue();
+  queue.enqueue(1);
+  queue.enqueue(2);
+  queue.enqueue(3);
+
+  return queue;
+};
