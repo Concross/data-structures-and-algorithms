@@ -50,3 +50,41 @@ describe('QueueWithStacks enqueue(val) tests', () => {
     }).toThrowError('Input Error: enqueue() requires a value');
   });
 });
+
+describe('QueueWithStacks dequeue() tests', () => {
+
+  test('should return undefined if the queue is empty', () => {
+    let queue = new QueueWithStacks();
+    let actual = queue.dequeue();
+
+    expect(actual).toBeUndefined();
+  });
+
+  test('should return the the item in a queue of one item', () => {
+    let queue = new QueueWithStacks();
+    queue.enqueue(1);
+    let actual = queue.dequeue();
+
+    expect(actual).toBe(1);
+  });
+
+  test('should return the first item added in a queue of multiple items', () => {
+    let queue = new QueueWithStacks();
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+
+    let actual = queue.dequeue();
+    expect(actual).toBe(1);
+  });
+
+  test('should decrement the length of the queue', () => {
+    let queue = new QueueWithStacks();
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.dequeue();
+
+    let actual = queue.size;
+    expect(actual).toBe(1);
+  });
+});

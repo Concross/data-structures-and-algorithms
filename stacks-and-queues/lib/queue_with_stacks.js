@@ -2,6 +2,8 @@
 
 const Stack = require('../lib/stack');
 
+const _transferStack = Symbol('transferStack');
+
 class QueueWithStacks {
   constructor() {
     this.size = 0;
@@ -17,6 +19,32 @@ class QueueWithStacks {
     this.size++;
 
   }
+
+  dequeue() {
+    if (!this.size) {
+      return;
+    } else if (this.dequeueStack.size) {
+      this.size--;
+      return this.dequeueStack.pop();
+    } else {
+      // while (this.enqueueStack.size) {
+      //   let item = this.enqueueStack.pop();
+      //   this.dequeueStack.push(item);
+      // }
+      this[_transferStack]();
+      this.size--;
+      return this.dequeueStack.pop();
+    }
+  }
+
+  [_transferStack]() {
+    while (this.enqueueStack.size) {
+      let item = this.enqueueStack.pop();
+      this.dequeueStack.push(item);
+    }
+  }
+
+
 }
 
 module.exports = QueueWithStacks;
