@@ -83,13 +83,24 @@ describe('LinkedList class prepend method tests', () => {
     expect(actual).toBe(expected);
   });
 
-  test('should prepend a node to the head of an EMPTY list', () => {
+  test('should prepend a node to the head of an EMPTY list and maintain tail', () => {
     let emptyLinkedList = new LinkedList();
     emptyLinkedList.prepend(2);
     let actual = emptyLinkedList.head.value;
     let expected = 2;
     expect(actual).toBe(expected);
+
+    actual = emptyLinkedList.tail.value;
+    expect(actual).toBe(expected);
   });
+
+  test('should maintain an existing tail', () => {
+    linkedList.prepend(2);
+    let actual = linkedList.tail.value;
+    let expected = 1;
+    expect(actual).toBe(expected);
+  });
+
 });
 
 /***********************************

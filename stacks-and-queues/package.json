@@ -1,0 +1,15 @@
+{
+  "name": "stacks-and-queues",
+  "version": "1.0.0",
+  "description": "stacks and queues",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest **/*.test.js",
+    "lint": "eslint **/.js"
+  },
+  "author": "Connor Crossley <cacrossley22@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
