@@ -15,6 +15,7 @@ class QueueWithStacks {
     if (!value) {
       throw new Error('Input Error: enqueue() requires a value');
     }
+
     this.enqueueStack.push(value);
     this.size++;
 
@@ -23,14 +24,12 @@ class QueueWithStacks {
   dequeue() {
     if (!this.size) {
       return;
+
     } else if (this.dequeueStack.size) {
       this.size--;
       return this.dequeueStack.pop();
+
     } else {
-      // while (this.enqueueStack.size) {
-      //   let item = this.enqueueStack.pop();
-      //   this.dequeueStack.push(item);
-      // }
       this[_transferStack]();
       this.size--;
       return this.dequeueStack.pop();
@@ -43,8 +42,6 @@ class QueueWithStacks {
       this.dequeueStack.push(item);
     }
   }
-
-
 }
 
 module.exports = QueueWithStacks;
