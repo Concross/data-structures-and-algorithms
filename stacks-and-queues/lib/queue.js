@@ -24,7 +24,7 @@ class Queue {
 
   dequeue() {
     if (this.size) {
-      let frontValue = this.storage.remove(0).value;
+      let frontValue = this.storage.removeOffset(0).value;
       this.size--;
       return frontValue;
     }

@@ -20,8 +20,37 @@ class AnimalShelter extends Queue {
       throw new Error('Input Error: enqueue requires a string "cat" or "dog"');
     }
 
-    if (value.toLowerCase() !== 'dog' || value.toLowerCase() !== 'cat') {
+    value.toLowerCase();
+    if (value === 'dog' || value === 'cat') {
+      return;
+
+    } else {
       throw new Error('Input Error: enqueue requires a string "cat" or "dog"');
+    }
+
+    /* 
+    * Any ideas why this condition would resolve to true and throw my error
+    * with value 'cat'?
+    * 
+    * if (value !== 'dog' || value !== 'cat') {
+    *   throw new Error('Input Error: enqueue requires a string "cat" or "dog"');
+    * }
+    * 
+    */
+  }
+
+  dequeue(pref) {
+    if (pref === 'cat' || pref === 'dog') {
+      let item = this.storage.removeItem(pref);
+
+      if (!item) {
+        throw new Error(`Error: no ${pref}s in the queue`);
+      } else {
+        return item.value;
+      }
+
+    } else {
+      return super.dequeue();
     }
   }
 }

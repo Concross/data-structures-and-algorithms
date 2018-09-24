@@ -26,7 +26,7 @@ class Stack {
 
   pop() {
     if (this.size) {
-      let topValue = this.storage.remove(0).value;
+      let topValue = this.storage.removeOffset(0).value;
       this.size--;
       return topValue;
     }
