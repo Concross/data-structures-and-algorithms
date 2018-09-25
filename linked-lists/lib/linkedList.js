@@ -27,9 +27,9 @@ class LinkedList {
   // append is O(1)
   append(value) {
 
-    if (typeof value !== 'number') {
-      throw new TypeError('append(val) requires the parameter to be an integer');
-    }
+    // if (typeof value !== 'number') {
+    //   throw new TypeError('append(val) requires the parameter to be an integer');
+    // }
 
     if (this.tail) {
       this.tail = this.tail.next = new Node(value, null);
@@ -67,7 +67,7 @@ class LinkedList {
   }
 
   // remove is O(n)
-  remove(offset) {
+  removeOffset(offset) {
     if (!this.length) {
       throw new Error('No nodes to remove');
 
@@ -115,6 +115,25 @@ class LinkedList {
     this.tail = prev;
     this.length--;
     return node;
+  }
+
+  removeItem(targetValue) {
+    if (!this.length) {
+      throw new Error('No nodes to remove');
+    } else {
+      let curr = this.head;
+      let next = curr.next;
+      let offset = 0;
+
+      while (next && curr.value !== targetValue) {
+        curr = next;
+        offset++;
+      }
+
+      if (curr.value === targetValue) {
+        return this.removeOffset(offset);
+      }
+    }
   }
 
   // insertBefore() has Big O(n)
@@ -180,12 +199,12 @@ class LinkedList {
 
     let curr = list1.head.next;
     while (curr && list2.length) {
-      list1.insertBefore(curr.value, list2.remove(0).value);
+      list1.insertBefore(curr.value, list2.removeOffset(0).value);
       curr = curr.next;
     }
 
     while (list2.length) {
-      list1.append(list2.remove(0).value);
+      list1.append(list2.removeOffset(0).value);
     }
 
     return list1.head;
