@@ -7,6 +7,9 @@
     "test": "jest **/*.test.js",
     "lint": "eslint **/.js"
   },
+  "jest": {
+    "verbose": true
+  },
   "author": "Connor Crossley <cacrossley22@gmail.com>",
   "license": "ISC",
   "dependencies": {

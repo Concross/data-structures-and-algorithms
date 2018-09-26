@@ -32,6 +32,12 @@ class Stack {
     }
   }
 
+  peek() {
+    // let value = this.pop();
+    // value && this.push(value);
+    return this.storage.head && this.storage.head.value;
+  }
+
   serialize() {
     return JSON.stringify(this);
   }
