@@ -3,8 +3,14 @@
 class Node {
   constructor(value, left, right) {
     this.value = value;
-    this.left = left || null;
-    this.right = right || null;
+
+    if ((left && left.constructor !== Node) || (right && right.constructor !== Node)) {
+      throw new Error('InputError: left and right params must be Nodes');
+
+    } else {
+      this.left = left || null;
+      this.right = right || null;
+    }
   }
 }
 
