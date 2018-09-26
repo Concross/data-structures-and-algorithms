@@ -15,19 +15,17 @@ let multiBracketValidation = (bracketString) => {
 
   if (!bracketString.length) {
     return true;
-
-  } else if (bracketString.length === 1) {
-    return false;
   }
 
-  for (let char of bracketString) {
-    if (openBrackets.includes(char)) {
-      stack.push(char);
+  for (let character of bracketString) {
+    if (openBrackets.includes(character)) {
+      stack.push(character);
     }
 
-    if (closingBrackets.includes(char)) {
-      if (brackets[char] === stack.peek()) {
+    if (closingBrackets.includes(character)) {
+      if (brackets[character] === stack.peek()) {
         stack.pop();
+
       } else {
         return false;
       }
