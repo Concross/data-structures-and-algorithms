@@ -48,6 +48,8 @@ class BinarySearchTree {
     if (node.constructor !== Node) {
       throw new Error('InputError: insert method requires a Node object');
     }
+    // findMax on left
+    // findMin on right
 
 
   }
