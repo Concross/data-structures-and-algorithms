@@ -47,11 +47,14 @@ bottom
 
 #### queue.dequeue()
 - returns the element at the front of the queue
+```
      ------------------
 back | 4   3   2   1  | front
      ------------------
           dequeue() => 1
           -------------
     back  | 4   3   2 | front 
+          -------------
+```
 - `queue.dequeue()` returns `1`
 - `queue.dequeue()` returns undefined for an empty queue
