@@ -37,7 +37,7 @@ bottom
 ```
 - `stack.peek()` will return `4`
 - `stack.peek()` will return undefined for an empty stack
-===
+
 # Queue
 ### Methods
 #### queue.enqueue(val)
