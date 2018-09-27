@@ -192,7 +192,8 @@ class LinkedList {
     return new LinkedList(newList);
   }
 
-  static mergeList(list1, list2) {
+  // merges list 2 into list 2, alternating values with list 1 starting the head
+  static mergeLists(list1, list2) {
 
     if (!list1.length) { return list2.head; }
     if (!list2.length) { return list1.head; }
