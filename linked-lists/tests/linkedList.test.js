@@ -349,7 +349,7 @@ describe('LinkedList static method mergeLists tests', () => {
       list1.append(i);
       list2.append(i + 3);
     }
-    LinkedList.mergeList(list1, list2);
+    LinkedList.mergeLists(list1, list2);
     let actual = list1.head.next.value;
     let expected = 3;
     expect(actual).toBe(expected);
@@ -368,7 +368,7 @@ describe('LinkedList static method mergeLists tests', () => {
     list2.append(6);
     list2.append(7);
 
-    LinkedList.mergeList(list1, list2);
+    LinkedList.mergeLists(list1, list2);
     let actual = list1.tail.value;
     let expected = 7;
 
@@ -385,9 +385,45 @@ describe('LinkedList static method mergeLists tests', () => {
     list1.append(6);
     list1.append(7);
 
-    LinkedList.mergeList(list1, list2); // 0, 3, 1, 4, 2, 5, 6, 7
+    LinkedList.mergeLists(list1, list2); // 0, 3, 1, 4, 2, 5, 6, 7
     let actual = list1.tail.value;
     let expected = 7;
+    expect(actual).toBe(expected);
+  });
+
+  it('should be able to handle an empty first list', () => {
+    let list1 = new LinkedList();
+    let list2 = new LinkedList();
+    for (let i = 0; i < 3; i++) {
+      list2.append(i);
+    }
+
+    LinkedList.mergeLists(list1, list2);
+    let actual = list1.head.value;
+    let expected = 0;
+
+    expect(actual).toBe(expected);
+
+    actual = list1.tail.value;
+    expected = 2;
+    expect(actual).toBe(expected);
+  });
+
+  it('should be able to handle an empty second list', () => {
+    let list1 = new LinkedList();
+    let list2 = new LinkedList();
+    for (let i = 0; i < 3; i++) {
+      list1.append(i);
+    }
+
+    LinkedList.mergeLists(list1, list2);
+    let actual = list1.head.value;
+    let expected = 0;
+
+    expect(actual).toBe(expected);
+
+    actual = list1.tail.value;
+    expected = 2;
     expect(actual).toBe(expected);
   });
 });
