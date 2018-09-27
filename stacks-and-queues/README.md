@@ -1,7 +1,7 @@
 # Stacks and Queues
 An exploration into stack and queue data structures
-
-## Stack
+===
+# Stack
 ### Methods
 #### stack.push(val)
 - pushes a value on top of the stack
@@ -37,3 +37,21 @@ bottom
 ```
 - `stack.peek()` will return `4`
 - `stack.peek()` will return undefined for an empty stack
+===
+# Queue
+### Methods
+#### queue.enqueue(val)
+- appends a value to the end of a queue
+- throws an error if now value is passed
+- increases the size of the queue
+
+#### queue.dequeue()
+- returns the element at the front of the queue
+     ------------------
+back | 4   3   2   1  | front
+     ------------------
+          dequeue() => 1
+          -------------
+    back  | 4   3   2 | front 
+- `queue.dequeue()` returns `1`
+- `queue.dequeue()` returns undefined for an empty queue
