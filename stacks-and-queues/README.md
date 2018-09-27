@@ -1,5 +1,6 @@
 # Stacks and Queues
-- An exploration into stack and queue data structures
+* An exploration into stack and queue data structures
+
 ===
 # Stack
 ### Methods
