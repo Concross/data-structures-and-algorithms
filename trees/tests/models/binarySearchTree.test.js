@@ -79,48 +79,63 @@ describe('BinarySearchTree insert(node) tests', () => {
   });
 });
 
+describe('BinarySearchTree findMin(node) tests', () => {
+
+  test('should throw an error if passed a value other than a node', () => {
+    let bst = new BST(new Node(10));
+
+    expect(() => {
+      bst.findMin(1);
+    });
+  });
+
+  test('should return the node with the minimum value in the tree', () => {
+    let bst = buildTestTree();
+
+    let actual = BST.findMin(bst.root).value;
+    let expected = 1;
+    expect(actual).toBe(expected);
+  });
+
+  test('should return the proper minimum for any subtree', () => {
+    let bst = buildTestTree();
+
+    let actual = BST.findMin(bst.root.right).value;
+    let expected = 6;
+    expect(actual).toBe(expected);
+  });
+});
+
 describe('BinarySearchTree remove(node) tests', () => {
 
-  test('should throw an error if passed value is not a Node object', () => {
-    let bst = new BST(new Node(1));
+  test('should throw an error if passed a value other than a node', () => {
+    let bst = new BST(new Node(10));
 
     expect(() => {
-      bst.remove(1);
-    }).toThrow();
+      bst.findMin(1);
+    });
   });
 
-  test('should return undefined if no nodes are present in the tree', () => {
-    let bst = new BST();
-    let node = new Node(1);
-    let actual = bst.remove(node);
+  test('should set root to null if removing the root node with no children', () => {
+    let bst = new BST(new Node(1));
+    let nodeToRemove = new Node(1);
+    let actual = bst.remove(nodeToRemove);
+    let expected = new Node(1);
 
-    expect(actual).toBeUndefined();
+    expect(actual).toEqual(expected);
   });
 });
 
-describe('BinarySearchTree find(node) tests', () => {
+let buildTestTree = () => {
+  let bst = new BST(new Node(5));
+  bst.insert(new Node(3));
+  bst.insert(new Node(6));
+  bst.insert(new Node(1));
+  bst.insert(new Node(4));
+  bst.insert(new Node(2));
+  bst.insert(new Node(8));
+  bst.insert(new Node(7));
+  bst.insert(new Node(9));
 
-  test('should throw an error if passed value is not a Node object', () => {
-    let bst = new BST(new Node(1));
-
-    expect(() => {
-      bst.find(1);
-    }).toThrow();
-  });
-
-  test('should return true if the node has been found in the tree', () => {
-    let bst = new BST(new Node(1));
-    let node = new Node(1);
-
-    let actual = bst.find(node);
-    expect(actual).toBe(true);
-  });
-
-  test('should return false if the node has not been found in the tree', () => {
-    let bst = new BST(new Node(1));
-    let node = new Node(2);
-
-    let actual = bst.find(node);
-    expect(actual).toBe(false);
-  });
-});
+  return bst;
+};
