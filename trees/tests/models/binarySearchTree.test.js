@@ -179,6 +179,17 @@ describe('BinarySearchTree FizzBuzz algorithm', () => {
     expect(actual).toBe(expected);
   });
 });
+
+describe('BinarySearchTree breadthFirstTraversal tests', () => {
+
+  test('should throw an error if root is null', () => {
+    let bst = new BST();
+
+    expect(() => {
+      bst.breadthFirstTraversal();
+    }).toThrow();
+  });
+});
 /***********************************
 *        Helper Functions          *
 ************************************/

@@ -9,6 +9,9 @@ class BinarySearchTree {
     this.root = root || null;
   }
 
+  /***********************************
+  *     INSERT                       *
+  ************************************/
   insert(node) {
     if (node.constructor !== Node) {
       throw new Error('InputError: insert method requires a Node object');
@@ -37,6 +40,9 @@ class BinarySearchTree {
     }
   }
 
+  /***********************************
+  *     FIZZBUZZ TREE                *
+  ************************************/
   static fizzBuzz(tree) {
     if (tree.constructor !== BinarySearchTree) {
       throw new Error('InputError: argument must be a BinarySearchTree');
