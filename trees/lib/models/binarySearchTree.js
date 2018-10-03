@@ -1,6 +1,7 @@
 'use strict';
 
 const Node = require('./node');
+const Queue = require('../../../stacks-and-queues/lib/queue');
 
 const _insertNode = Symbol('insertNode');
 const _inOrderWalk = Symbol('inOrderWalk');
@@ -74,12 +75,36 @@ class BinarySearchTree {
   }
 
   /***********************************
-  *     BREADTH FIRST TRAVERSAL      *
+  *      BREADTH FIRST TRAVERSAL     *
   ************************************/
   breadthFirstTraversal() {
     if (!this.root) {
-      throw new Error('Error: cannot traverse a tree with null root');
+      throw new Error('Error: Cannot traverse a tree without a root');
     }
+
+    let printQueue = new Queue();
+    let result = [];
+
+    result.push(this.root.value);
+
+    return result;
+  }
+
+  /***********************************
+  *    FIND MAX NODE ANY BIN TREE    *
+  ************************************/
+  static findMaxBinaryTree(tree) {
+    let max = tree.root.value;
+
+    let compare = (node) => {
+      if (node.value > max) {
+        max = node.value;
+      }
+    };
+
+    this.prototype[_inOrderWalk](tree.root, compare);
+
+    return max;
   }
 
   static findMin(node) {
