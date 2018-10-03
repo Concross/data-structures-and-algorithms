@@ -189,6 +189,15 @@ describe('BinarySearchTree breadthFirstTraversal tests', () => {
       bst.breadthFirstTraversal();
     }).toThrow();
   });
+
+  test('should properly traverse a tree of height 1, returning an array containing the single node value', () => {
+    let bst = new BST(new Node(1));
+
+    let actual = bst.breadthFirstTraversal();
+    let expected = [1];
+
+    expect(actual).toEqual(expected);
+  });
 });
 /***********************************
 *        Helper Functions          *
