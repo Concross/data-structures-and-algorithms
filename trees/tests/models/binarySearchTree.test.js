@@ -250,6 +250,27 @@ describe('BinarySearchTree breadthFirstTraversal tests', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  test('should properly traverse an imbalanced tree, returning an array containing the proper values', () => {
+    let bst = buildImbalancedTree();
+    /*
+            5
+           / \
+          /   \
+         /     \
+        7       9
+         \     /
+          1   2
+         / \   \
+        4   6   8
+             \
+              3
+    */
+    let actual = bst.breadthFirstTraversal();
+    let expected = [5, 7, 9, 1, 2, 4, 6, 8, 3];
+
+    expect(actual).toEqual(expected);
+  });
 });
 /***********************************
 *        Helper Functions          *
