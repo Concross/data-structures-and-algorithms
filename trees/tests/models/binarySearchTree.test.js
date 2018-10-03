@@ -215,22 +215,22 @@ describe('BinarySearchTree FizzBuzz algorithm', () => {
 ************************************/
 describe('BinarySearchTree breadthFirstTraversal tests', () => {
 
-  // test('should throw an error if root is null', () => {
-  //   let bst = new BST();
+  test('should throw an error if root is null', () => {
+    let bst = new BST();
 
-  //   expect(() => {
-  //     bst.breadthFirstTraversal();
-  //   }).toThrow();
-  // });
+    expect(() => {
+      bst.breadthFirstTraversal();
+    }).toThrow();
+  });
 
-  // test('should properly traverse a tree of height 1, returning an array containing the single node value', () => {
-  //   let bst = new BST(new Node(1));
+  test('should properly traverse a tree of height 1, returning an array containing the single node value', () => {
+    let bst = new BST(new Node(1));
 
-  //   let actual = bst.breadthFirstTraversal();
-  //   let expected = [1];
+    let actual = bst.breadthFirstTraversal();
+    let expected = [1];
 
-  //   expect(actual).toEqual(expected);
-  // });
+    expect(actual).toEqual(expected);
+  });
 
   test('should properly traverse a balanced tree, returning an array containing the proper values', () => {
     let bst = buildBalancedTree();
