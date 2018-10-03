@@ -83,6 +83,93 @@ describe('BinarySearchTree insert(node) tests', () => {
 });
 
 /***********************************
+*          REMOVE METHOD           *
+************************************/
+describe('BinarySearchTree Remove tests', () => {
+
+  test('should return undefined when removing from an empty tree', () => {
+    let bst = new BST();
+    let actual = bst.remove(new Node(1));
+    expect(actual).toBeUndefined();
+  });
+
+  test('should thrown an error if anything other than a node is passed', () => {
+    let bst = new BST(new Node(1));
+    let badArgs = ['', 1, true, [], {}, null, undefined];
+
+    badArgs.forEach(arg => {
+      expect(() => {
+        bst.remove(arg);
+      }).toThrow();
+    });
+  });
+
+  test('should properly remove a "leaf" from a root with two children', () => {
+    let five = new Node(5);
+    let three = new Node(3);
+    let seven = new Node(7);
+
+    five.left = three;
+    five.right = seven;
+
+    let bst = new BST(five);
+
+    bst.remove(three);
+
+    let actual = bst.root.left;
+    expect(actual).toBeNull();
+
+    actual = bst.root.right.value;
+    expect(actual).toBe(7);
+  });
+
+  test('should properly remove a "leaf from tree with greater height', () => {
+    let bst = buildBalancedTree();
+    /*
+                  5
+                /   \
+               /     \
+              3       7
+             / \     / \
+            2   4   6   8
+           /             \
+          1               9
+  */
+
+    bst.remove(new Node(4));
+
+    let actual = bst.root.left.right;
+    expect(actual).toBeNull();
+  });
+
+  test('should properly remove a node that has only one child', () => {
+    let bst = buildBalancedTree();
+
+    bst.remove(new Node(2));
+
+    let actual = bst.root.left.left.left;
+    expect(actual).toBeNull();
+
+    actual = bst.root.left.left.value;
+    expect(actual).toBe(1);
+  });
+
+  test('should properly remove a node that has two children in a balanced tree', () => {
+    let bst = buildBalancedTree();
+    bst.remove(new Node(7));
+
+    let actual = bst.root.right.value;
+    expect(actual).toBe(8);
+
+    actual = bst.root.right.left.value;
+    expect(actual).toBe(6);
+
+    actual = bst.root.right.right.value;
+    expect(actual).toBe(9);
+  });
+});
+
+/***********************************
 *           findMin Node           *
 ************************************/
 describe('BinarySearchTree findMin(node) tests', () => {

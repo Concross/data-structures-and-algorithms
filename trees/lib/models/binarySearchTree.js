@@ -42,6 +42,97 @@ class BinarySearchTree {
   }
 
   /***********************************
+  *      REMOVE VALUE FROM TREE      *
+  ************************************/
+  remove(node) {
+    if (node.constructor !== Node) {
+      throw new Error('InputError: passed argument must be of type Node');
+    }
+
+    let value = node.value;
+    let parentNode = this.root;
+
+    let _find = (value, currentNode) => {
+      if (value === currentNode.value) {
+        return currentNode;
+      }
+
+      if (value < currentNode.value) {
+        if (currentNode.left) {
+          parentNode = currentNode;
+          currentNode = currentNode.left;
+          return _find(value, currentNode);
+        } else {
+          throw new Error('Error: remove(value) value not found in tree');
+        }
+      }
+
+      if (value > currentNode.value) {
+        if (currentNode.right) {
+          parentNode = currentNode;
+          currentNode = currentNode.right;
+          return _find(value, currentNode);
+        } else {
+          throw new Error('Error: remove(value) value not found in tree');
+        }
+      }
+    };
+
+    if (!this.root) {
+      return;
+    }
+
+    node = _find(value, this.root);
+
+    if (!node.left && !node.right) {
+      let value = node.value;
+      node = null;
+      if (value === parentNode.left.value) {
+        parentNode.left = node;
+      } else if (value === parentNode.right.value) {
+        parentNode.right = node;
+      }
+
+      // node to remove has one right child
+    } else if (!node.left && node.right) {
+      if (node.value === parentNode.left.value) {
+        parentNode.left = node.right;
+        node = null;
+      } else if (node.value === parentNode.right.value) {
+        parentNode.right = node.right;
+        node = null;
+      }
+
+      // node to remove has one left child
+    } else if (node.left && !node.right) {
+      if (node.value === parentNode.left.value) {
+        parentNode.left = node.left;
+        node = null;
+      } else if (node.value === parentNode.right.value) {
+        parentNode.right = node.left;
+        node = null;
+      }
+
+      // node to remove has two children
+    } else if (node.left && node.right) {
+      let minNode = _find(BinarySearchTree.findMin(node.right).value, this.root);
+      node.value = minNode.value;
+      console.log(node);
+
+      if (minNode.right) {
+        if (minNode.value === parentNode.left.value) {
+          parentNode.left = minNode.right;
+        } else if (minNode.value === parentNode.right.value) {
+          parentNode.right = minNode.right;
+        }
+
+      }
+
+      minNode = null;
+    }
+  }
+
+  /***********************************
   *     FIZZBUZZ TREE                *
   ************************************/
   static fizzBuzz(tree) {
