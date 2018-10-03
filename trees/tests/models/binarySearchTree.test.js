@@ -93,6 +93,12 @@ describe('BinarySearchTree Remove tests', () => {
     expect(actual).toBeUndefined();
   });
 
+  test('should remove the root when only the root exists', () => {
+    let bst = new BST(new Node(1));
+    bst.remove(new Node(1));
+    expect(bst.root).toBeNull();
+  });
+
   test('should thrown an error if anything other than a node is passed', () => {
     let bst = new BST(new Node(1));
     let badArgs = ['', 1, true, [], {}, null, undefined];
@@ -166,6 +172,36 @@ describe('BinarySearchTree Remove tests', () => {
 
     actual = bst.root.right.right.value;
     expect(actual).toBe(9);
+  });
+
+  test('should properly remove the root', () => {
+    let bst = buildBalancedTree();
+    bst.remove(new Node(5));
+    expect(bst.root.value).toBe(6);
+  });
+});
+
+/***********************************
+*      SERIALIZE/DESERIALIZE       *
+************************************/
+describe('Serialize', () => {
+
+  test('should return a buffer', () => {
+    let bst = buildBalancedTree();
+    let serializedTree = bst.serialize();
+
+    expect(serializedTree).toBeInstanceOf(Buffer);
+  });
+});
+
+describe('Deserialize', () => {
+
+  test('should return an instance of a tree', () => {
+    let bst = buildBalancedTree();
+    let serializedTree = bst.serialize();
+    let deserializedTree = BST.deserialize(serializedTree);
+
+    expect(deserializedTree).toBeInstanceOf(BST);
   });
 });
 
