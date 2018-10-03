@@ -130,10 +130,53 @@ describe('BinarySearchTree FizzBuzz algorithm', () => {
 
   test('should convert nodes divisible by 15 to "fizzbuzz"', () => {
     let bst = buildFizzBuzzTree();
-
-    // root is 30
+    /*
+            30
+           /  \
+          3    5
+         /    / \
+        9    2   8
+    */
     BST.fizzBuzz(bst);
-    expect(bst.root.value).toBe('fizzbuzz');
+    let actual = bst.root.value;
+    let expected = 'fizzbuzz';
+
+    expect(actual).toBe(expected);
+  });
+
+  test('should convert nodes divisible by 5 to "buzz"', () => {
+    let bst = buildFizzBuzzTree();
+    /*
+            30
+           /  \
+          3    5
+         /    / \
+        9    2   8
+    */
+    BST.fizzBuzz(bst);
+    let actual = bst.root.right.value;
+    let expected = 'buzz';
+
+    expect(actual).toBe(expected);
+  });
+
+  test('should convert nodes divisible by 3 to "fizz"', () => {
+    let bst = buildFizzBuzzTree();
+    /*
+            30
+           /  \
+          3    5
+         /    / \
+        9    2   8
+    */
+    BST.fizzBuzz(bst);
+    let actual = bst.root.left.value;
+    let expected = 'fizz';
+
+    expect(actual).toBe(expected);
+
+    actual = bst.root.left.left.value;
+    expect(actual).toBe(expected);
   });
 });
 /***********************************
