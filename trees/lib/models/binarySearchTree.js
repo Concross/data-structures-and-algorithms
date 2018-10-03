@@ -73,6 +73,15 @@ class BinarySearchTree {
     }
   }
 
+  /***********************************
+  *     BREADTH FIRST TRAVERSAL      *
+  ************************************/
+  breadthFirstTraversal() {
+    if (!this.root) {
+      throw new Error('Error: cannot traverse a tree with null root');
+    }
+  }
+
   static findMin(node) {
 
     while (node.left) {
