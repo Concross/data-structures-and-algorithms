@@ -211,63 +211,6 @@ describe('BinarySearchTree FizzBuzz algorithm', () => {
 });
 
 /***********************************
-*     BREADTH FIRST TRAVERSAL      *
-************************************/
-// describe('BinarySearchTree breadthFirstTraversal tests', () => {
-
-//   test('should throw an error if root is null', () => {
-//     let bst = new BST();
-
-//     expect(() => {
-//       bst.breadthFirstTraversal();
-//     }).toThrow();
-//   });
-
-// test('should properly traverse a tree of height 1, returning an array containing the single node value', () => {
-//   let bst = new BST(new Node(1));
-
-//   let actual = bst.breadthFirstTraversal();
-//   let expected = [1];
-
-//   expect(actual).toEqual(expected);
-// });
-
-// test('should properly traverse a balanced tree, returning an array containing the node values in the right order', () => {
-//   let bst = buildBalancedTree();
-
-//   /*
-//                 5
-//               /   \
-//              /     \
-//             3       7
-//            / \     / \
-//           2   4   6   8
-//          /             \
-//         1               9
-// */
-//   let actual = bst.breadthFirstTraversal();
-//   let expected = [5, 3, 7, 2, 4, 6, 8, 1, 9];
-
-//   expect(actual).toEqual(expected);
-// });
-
-//   test('should properly traverse a degenerate tree, returning an array in the right order', () => {
-//     let bst = buildDegenerateTree();
-//     /*
-//         1
-//          \
-//           2
-//            \
-//             3 .. etc
-//     */
-
-//     let actual = bst.breadthFirstTraversal();
-//     let expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-//     expect(actual).toEqual(expected);
-//   });
-// });
-/***********************************
 *        Helper Functions          *
 ************************************/
 
