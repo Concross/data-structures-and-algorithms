@@ -271,6 +271,22 @@ describe('BinarySearchTree breadthFirstTraversal tests', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  test('should properly traverse a degenerate tree, returning an array containing the proper values', () => {
+    let bst = buildDegenerateTree();
+    /*
+      1
+       \
+        2
+         \
+          3 .. etc
+    */
+
+    let actual = bst.breadthFirstTraversal();
+    let expected = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    expect(actual).toEqual(expected);
+  });
 });
 /***********************************
 *        Helper Functions          *
