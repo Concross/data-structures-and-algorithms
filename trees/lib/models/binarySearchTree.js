@@ -85,7 +85,15 @@ class BinarySearchTree {
     let printQueue = new Queue();
     let result = [];
 
-    result.push(this.root.value);
+    printQueue.enqueue(this.root);
+
+    while (printQueue.size) {
+      let node = printQueue.dequeue();
+      result.push(node.value);
+
+      if (node.left) printQueue.enqueue(node.left);
+      if (node.right) printQueue.enqueue(node.right);
+    }
 
     return result;
   }

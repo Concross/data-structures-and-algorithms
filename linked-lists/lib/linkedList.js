@@ -96,7 +96,12 @@ class LinkedList {
   // private class methods for remove, using Symbols!
   [_removeFirst]() {
     let node = this.head;
-    this.head = this.head.next || null;
+    if (this.head.next) {
+      this.head = this.head.next;
+    } else {
+      this.head = this.tail = null;
+    }
+    // this.head = this.head.next || null;
     this.length--;
     return node;
   }
