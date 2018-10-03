@@ -127,6 +127,14 @@ describe('BinarySearchTree FizzBuzz algorithm', () => {
       }).toThrow();
     });
   });
+
+  test('should convert nodes divisible by 15 to "fizzbuzz"', () => {
+    let bst = buildFizzBuzzTree();
+
+    // root is 30
+    BST.fizzBuzz(bst);
+    expect(bst.root.value).toBe('fizzbuzz');
+  });
 });
 /***********************************
 *        Helper Functions          *
@@ -167,6 +175,32 @@ let buildTestTree = () => {
   eight.right = nine;
 
   let bst = new BST(five);
+
+  return bst;
+};
+
+let buildFizzBuzzTree = () => {
+  let thirty = new Node(30);
+  let five = new Node(5);
+  let three = new Node(3);
+  let two = new Node(2);
+  let eight = new Node(8);
+  let nine = new Node(9);
+
+  /*
+          30
+         /  \
+        3    5
+       /    / \
+      9    2   8
+  */
+  thirty.right = five;
+  thirty.left = three;
+  five.left = two;
+  five.right = eight;
+  three.left = nine;
+
+  let bst = new BST(thirty);
 
   return bst;
 };

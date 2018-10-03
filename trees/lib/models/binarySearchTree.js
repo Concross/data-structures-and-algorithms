@@ -40,6 +40,26 @@ class BinarySearchTree {
     if (tree.constructor !== BinarySearchTree) {
       throw new Error('InputError: argument must be a BinarySearchTree');
     }
+
+    let _inOrderWalk = (node) => {
+      if (node.left) {
+        _inOrderWalk(node.left);
+      }
+
+      if (node.value % 15 === 0) {
+        node.value = 'fizzbuzz'
+      } else if (node.value % 5 === 0) {
+        node.value = 'buzz';
+      } else if (node.value % 3 === 0) {
+        node.value = 'fizz';
+      }
+
+      if (node.right) {
+        _inOrderWalk(node.right);
+      }
+    }
+
+    _inOrderWalk(tree.root);
   }
 
   static findMin(node) {
