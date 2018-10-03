@@ -87,11 +87,11 @@ describe('BinarySearchTree insert(node) tests', () => {
 ************************************/
 describe('BinarySearchTree Remove tests', () => {
 
-  // test('should return undefined when removing from an empty tree', () => {
-  //   let bst = new BST();
-  //   let actual = bst.remove(1);
-  //   expect(actual).toBeUndefined();
-  // });
+  test('should return undefined when removing from an empty tree', () => {
+    let bst = new BST();
+    let actual = bst.remove(new Node(1));
+    expect(actual).toBeUndefined();
+  });
 
   test('should thrown an error if anything other than a node is passed', () => {
     let bst = new BST(new Node(1));
@@ -114,7 +114,6 @@ describe('BinarySearchTree Remove tests', () => {
 
     let bst = new BST(five);
 
-    console.log(bst.root);
     bst.remove(three);
 
     let actual = bst.root.left;
@@ -141,6 +140,32 @@ describe('BinarySearchTree Remove tests', () => {
 
     let actual = bst.root.left.right;
     expect(actual).toBeNull();
+  });
+
+  test('should properly remove a node that has only one child', () => {
+    let bst = buildBalancedTree();
+
+    bst.remove(new Node(2));
+
+    let actual = bst.root.left.left.left;
+    expect(actual).toBeNull();
+
+    actual = bst.root.left.left.value;
+    expect(actual).toBe(1);
+  });
+
+  test('should properly remove a node that has two children in a balanced tree', () => {
+    let bst = buildBalancedTree();
+    bst.remove(new Node(7));
+
+    let actual = bst.root.right.value;
+    expect(actual).toBe(8);
+
+    actual = bst.root.right.left.value;
+    expect(actual).toBe(6);
+
+    actual = bst.root.right.right.value;
+    expect(actual).toBe(9);
   });
 });
 

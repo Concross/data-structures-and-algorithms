@@ -11,7 +11,7 @@
     "test": "jest"
   },
   "jest": {
-    "verbose": true
+    "verbose": false
   },
   "author": "Connor Crossley <cacrossley22@gmail.com>",
   "license": "ISC",
