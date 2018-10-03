@@ -75,6 +75,30 @@ class BinarySearchTree {
   }
 
   /***********************************
+  *      BREADTH FIRST TRAVERSAL     *
+  ************************************/
+  breadthFirstTraversal() {
+    if (!this.root) {
+      throw new Error('Error: Cannot traverse a tree without a root');
+    }
+
+    let printQueue = new Queue();
+    let result = [];
+
+    printQueue.enqueue(this.root);
+
+    while (printQueue.size) {
+      let node = printQueue.dequeue();
+      result.push(node.value);
+
+      if (node.left) printQueue.enqueue(node.left);
+      if (node.right) printQueue.enqueue(node.right);
+    }
+
+    return result;
+  }
+
+  /***********************************
   *    FIND MAX NODE ANY BIN TREE    *
   ************************************/
   static findMaxBinaryTree(tree) {
