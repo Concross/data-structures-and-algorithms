@@ -83,6 +83,29 @@ describe('BinarySearchTree insert(node) tests', () => {
 });
 
 /***********************************
+*          REMOVE METHOD           *
+************************************/
+describe('BinarySearchTree Remove tests', () => {
+
+  // test('should return undefined when removing from an empty tree', () => {
+  //   let bst = new BST();
+  //   let actual = bst.remove(1);
+  //   expect(actual).toBeUndefined();
+  // });
+
+  test('should thrown an error if anything other than a node is passed', () => {
+    let bst = new BST(new Node(1));
+    let badArgs = ['', 1, true, [], {}, null, undefined];
+
+    badArgs.forEach(arg => {
+      expect(() => {
+        bst.remove(arg);
+      }).toThrow();
+    });
+  });
+});
+
+/***********************************
 *           findMin Node           *
 ************************************/
 describe('BinarySearchTree findMin(node) tests', () => {

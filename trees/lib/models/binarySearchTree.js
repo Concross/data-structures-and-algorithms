@@ -42,6 +42,15 @@ class BinarySearchTree {
   }
 
   /***********************************
+  *      REMOVE VALUE FROM TREE      *
+  ************************************/
+  remove(node) {
+    if (node.constructor !== Node) {
+      throw new Error('InputError: passed argument must be of type Node');
+    }
+  }
+
+  /***********************************
   *     FIZZBUZZ TREE                *
   ************************************/
   static fizzBuzz(tree) {
