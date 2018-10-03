@@ -80,6 +80,9 @@ class BinarySearchTree {
 
     if (!this.root) {
       return;
+    } else if (!this.root.right && !this.root.left) {
+      this.root = null;
+      return;
     }
 
     node = _find(value, this.root);
@@ -117,7 +120,6 @@ class BinarySearchTree {
     } else if (node.left && node.right) {
       let minNode = _find(BinarySearchTree.findMin(node.right).value, this.root);
       node.value = minNode.value;
-      console.log(node);
 
       if (minNode.right) {
         if (minNode.value === parentNode.left.value) {
@@ -130,6 +132,19 @@ class BinarySearchTree {
 
       minNode = null;
     }
+  }
+
+  /***********************************
+  *            SERIALIZE             *
+  ************************************/
+  serialize() {
+    return Buffer.from(this.breadthFirstTraversal());
+  }
+
+  static deserialize(serializedTree) {
+    let tree = new BinarySearchTree();
+    Array.from(serializedTree).forEach(node => tree.insert(new Node(node)));
+    return tree;
   }
 
   /***********************************
