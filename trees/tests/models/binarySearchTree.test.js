@@ -20,6 +20,9 @@ describe('BinarySearchTree constructor', () => {
   });
 });
 
+/***********************************
+*              INSERT              *
+************************************/
 describe('BinarySearchTree insert(node) tests', () => {
 
   test('should throw error if anything other than a node is passed into the method', () => {
@@ -79,6 +82,9 @@ describe('BinarySearchTree insert(node) tests', () => {
   });
 });
 
+/***********************************
+*           findMin Node           *
+************************************/
 describe('BinarySearchTree findMin(node) tests', () => {
 
   test('should throw an error if passed a value other than a node', () => {
@@ -106,36 +112,61 @@ describe('BinarySearchTree findMin(node) tests', () => {
   });
 });
 
-describe('BinarySearchTree remove(node) tests', () => {
+/***********************************
+*             FIZZBUZZ             *
+************************************/
+describe('BinarySearchTree FizzBuzz algorithm', () => {
 
-  test('should throw an error if passed a value other than a node', () => {
-    let bst = new BST(new Node(10));
+  test('should only accept a tree as an argument', () => {
 
-    expect(() => {
-      bst.findMin(1);
+    let badArgs = [[], {}, '', 1, false];
+
+    badArgs.forEach(arg => {
+      expect(() => {
+        BST.fizzBuzz(1);
+      }).toThrow();
     });
   });
-
-  test('should set root to null if removing the root node with no children', () => {
-    let bst = new BST(new Node(1));
-    let nodeToRemove = new Node(1);
-    let actual = bst.remove(nodeToRemove);
-    let expected = new Node(1);
-
-    expect(actual).toEqual(expected);
-  });
 });
+/***********************************
+*        Helper Functions          *
+************************************/
 
 let buildTestTree = () => {
-  let bst = new BST(new Node(5));
-  bst.insert(new Node(3));
-  bst.insert(new Node(6));
-  bst.insert(new Node(1));
-  bst.insert(new Node(4));
-  bst.insert(new Node(2));
-  bst.insert(new Node(8));
-  bst.insert(new Node(7));
-  bst.insert(new Node(9));
+
+  /*
+                  5
+                /   \
+               /     \
+              3       6
+             / \       \
+            1   4       8
+             \         / \
+              2       7   9
+  */
+  let one = new Node(1);
+  let two = new Node(2);
+  let three = new Node(3);
+  let four = new Node(4);
+  let five = new Node(5);
+  let six = new Node(6);
+  let seven = new Node(7);
+  let eight = new Node(8);
+  let nine = new Node(9);
+
+  five.left = three;
+  five.right = six;
+
+  three.left = one;
+  three.right = four;
+
+  one.right = two;
+  six.right = eight;
+
+  eight.left = seven;
+  eight.right = nine;
+
+  let bst = new BST(five);
 
   return bst;
 };
