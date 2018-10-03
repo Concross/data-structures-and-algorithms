@@ -1,0 +1,21 @@
+{
+  "name": "trees",
+  "version": "1.0.0",
+  "description": "Exploring trees",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true
+  },
+  "author": "Connor Crossley <cacrossley22@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
