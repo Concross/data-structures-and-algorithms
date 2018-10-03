@@ -3,8 +3,6 @@
 const Node = require('./node');
 
 const _insertNode = Symbol('insertNode');
-const _removeNode = Symbol('removeNode');
-const _findParent = Symbol('findParent');
 class BinarySearchTree {
   constructor(root) {
     this.root = root || null;
@@ -35,6 +33,12 @@ class BinarySearchTree {
       } else {
         this[_insertNode](node, currentNode.right);
       }
+    }
+  }
+
+  static fizzBuzz(tree) {
+    if (tree.constructor !== BinarySearchTree) {
+      throw new Error('InputError: argument must be a BinarySearchTree');
     }
   }
 
