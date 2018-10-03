@@ -3,6 +3,7 @@
 const Node = require('./node');
 
 const _insertNode = Symbol('insertNode');
+const _inOrderWalk = Symbol('inOrderWalk');
 class BinarySearchTree {
   constructor(root) {
     this.root = root || null;
@@ -41,25 +42,29 @@ class BinarySearchTree {
       throw new Error('InputError: argument must be a BinarySearchTree');
     }
 
-    let _inOrderWalk = (node) => {
-      if (node.left) {
-        _inOrderWalk(node.left);
-      }
-
+    let _fizzBuzzNode = (node) => {
       if (node.value % 15 === 0) {
-        node.value = 'fizzbuzz'
+        node.value = 'fizzbuzz';
       } else if (node.value % 5 === 0) {
         node.value = 'buzz';
       } else if (node.value % 3 === 0) {
         node.value = 'fizz';
       }
+    };
 
-      if (node.right) {
-        _inOrderWalk(node.right);
-      }
+    this.prototype[_inOrderWalk](tree.root, _fizzBuzzNode);
+  }
+
+  [_inOrderWalk](node, cb) {
+    if (node.left) {
+      this[_inOrderWalk](node.left, cb);
     }
 
-    _inOrderWalk(tree.root);
+    cb(node);
+
+    if (node.right) {
+      this[_inOrderWalk](node.right, cb);
+    }
   }
 
   static findMin(node) {
