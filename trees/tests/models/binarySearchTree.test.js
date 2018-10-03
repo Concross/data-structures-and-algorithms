@@ -180,6 +180,9 @@ describe('BinarySearchTree FizzBuzz algorithm', () => {
   });
 });
 
+/***********************************
+*     BREADTH FIRST TRAVERSAL      *
+************************************/
 describe('BinarySearchTree breadthFirstTraversal tests', () => {
 
   test('should throw an error if root is null', () => {
