@@ -103,6 +103,45 @@ describe('BinarySearchTree Remove tests', () => {
       }).toThrow();
     });
   });
+
+  test('should properly remove a "leaf" from a root with two children', () => {
+    let five = new Node(5);
+    let three = new Node(3);
+    let seven = new Node(7);
+
+    five.left = three;
+    five.right = seven;
+
+    let bst = new BST(five);
+
+    console.log(bst.root);
+    bst.remove(three);
+
+    let actual = bst.root.left;
+    expect(actual).toBeNull();
+
+    actual = bst.root.right.value;
+    expect(actual).toBe(7);
+  });
+
+  test('should properly remove a "leaf from tree with greater height', () => {
+    let bst = buildBalancedTree();
+    /*
+                  5
+                /   \
+               /     \
+              3       7
+             / \     / \
+            2   4   6   8
+           /             \
+          1               9
+  */
+
+    bst.remove(new Node(4));
+
+    let actual = bst.root.left.right;
+    expect(actual).toBeNull();
+  });
 });
 
 /***********************************

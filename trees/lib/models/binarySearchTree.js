@@ -48,6 +48,43 @@ class BinarySearchTree {
     if (node.constructor !== Node) {
       throw new Error('InputError: passed argument must be of type Node');
     }
+
+    let value = node.value;
+    let currentNode = this.root;
+    let parentNode = this.root;
+
+    let _find = (node) => {
+      if (value === node.value) {
+        return;
+      }
+
+      if (value < node.value) {
+        if (node.left) {
+          parentNode = node;
+          _find(node.left);
+        } else {
+          throw new Error('Error: remove(value) value not found in tree');
+        }
+      }
+
+      if (value > node.value) {
+        if (node.right) {
+          parentNode = node;
+          _find(node.right);
+        } else {
+          throw new Error('Error: remove(value) value not found in tree');
+        }
+      }
+    };
+
+    _find(currentNode);
+
+    if (node.value === parentNode.left.value) {
+      parentNode.left = node.left;
+    } else if (node.value === parentNode.right.value) {
+      parentNode.right = node.right;
+    }
+    node = null;
   }
 
   /***********************************
