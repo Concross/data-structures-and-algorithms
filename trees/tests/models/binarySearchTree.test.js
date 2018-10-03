@@ -113,6 +113,36 @@ describe('BinarySearchTree findMin(node) tests', () => {
 });
 
 /***********************************
+*     FIND MAX ANY BINARY TREE     *
+************************************/
+
+describe('BinarySearchTree static method findMax', () => {
+
+  test('should return the max value of a tree with a single node', () => {
+    let bst = new BST(new Node(1));
+    let actual = BST.findMaxBinaryTree(bst);
+    let expected = 1;
+
+    expect(actual).toBe(expected);
+  });
+
+  test('should return the max value of a balanced tree', () => {
+    let bst = buildBalancedTree();
+    let actual = BST.findMaxBinaryTree(bst);
+    let expected = 9;
+
+    expect(actual).toBe(expected);
+  });
+
+  test('should return the max value of an imbalanced tree', () => {
+    let bst = buildImbalancedTree();
+    let actual = BST.findMaxBinaryTree(bst);
+    let expected = 9;
+
+    expect(actual).toBe(expected);
+  });
+});
+/***********************************
 *             FIZZBUZZ             *
 ************************************/
 describe('BinarySearchTree FizzBuzz algorithm', () => {
@@ -179,6 +209,7 @@ describe('BinarySearchTree FizzBuzz algorithm', () => {
     expect(actual).toBe(expected);
   });
 });
+
 /***********************************
 *        Helper Functions          *
 ************************************/
@@ -221,6 +252,117 @@ let buildTestTree = () => {
 
   return bst;
 };
+
+let buildBalancedTree = () => {
+
+  /*
+                5
+              /   \
+             /     \
+            3       7
+           / \     / \
+          2   4   6   8
+         /             \
+        1               9
+*/
+  let one = new Node(1);
+  let two = new Node(2);
+  let three = new Node(3);
+  let four = new Node(4);
+  let five = new Node(5);
+  let six = new Node(6);
+  let seven = new Node(7);
+  let eight = new Node(8);
+  let nine = new Node(9);
+
+  five.left = three;
+  five.right = seven;
+
+  three.left = two;
+  three.right = four;
+
+  seven.left = six;
+  seven.right = eight;
+
+  two.left = one;
+
+  eight.right = nine;
+
+  let bst = new BST(five);
+
+  return bst;
+};
+
+let buildImbalancedTree = () => {
+
+  /*
+          5
+         / \
+        /   \
+       /     \
+      7       9
+       \     /
+        1   2
+       / \   \
+      4   6   8
+           \
+            3
+  */
+  let one = new Node(1);
+  let two = new Node(2);
+  let three = new Node(3);
+  let four = new Node(4);
+  let five = new Node(5);
+  let six = new Node(6);
+  let seven = new Node(7);
+  let eight = new Node(8);
+  let nine = new Node(9);
+
+  five.left = seven;
+  seven.right = one;
+  one.left = four;
+  one.right = six;
+  six.left = three;
+  five.right = nine;
+  nine.left = two;
+  two.right = eight;
+
+  let bst = new BST(five);
+
+  return bst;
+};
+
+let buildDegenerateTree = () => {
+  /*
+    1
+     \
+      2
+       \
+        3 .. etc
+  */
+  let one = new Node(1);
+  let two = new Node(2);
+  let three = new Node(3);
+  let four = new Node(4);
+  let five = new Node(5);
+  let six = new Node(6);
+  let seven = new Node(7);
+  let eight = new Node(8);
+  let nine = new Node(9);
+
+  one.right = two;
+  two.right = three;
+  three.right = four;
+  four.right = five;
+  five.right = six;
+  six.right = seven;
+  seven.right = eight;
+  eight.right = nine;
+
+  let bst = new BST(one);
+
+  return bst;
+}
 
 let buildFizzBuzzTree = () => {
   let thirty = new Node(30);

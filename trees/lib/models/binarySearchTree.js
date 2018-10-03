@@ -1,6 +1,7 @@
 'use strict';
 
 const Node = require('./node');
+const Queue = require('../../../stacks-and-queues/lib/queue');
 
 const _insertNode = Symbol('insertNode');
 const _inOrderWalk = Symbol('inOrderWalk');
@@ -9,6 +10,9 @@ class BinarySearchTree {
     this.root = root || null;
   }
 
+  /***********************************
+  *     INSERT                       *
+  ************************************/
   insert(node) {
     if (node.constructor !== Node) {
       throw new Error('InputError: insert method requires a Node object');
@@ -37,6 +41,9 @@ class BinarySearchTree {
     }
   }
 
+  /***********************************
+  *     FIZZBUZZ TREE                *
+  ************************************/
   static fizzBuzz(tree) {
     if (tree.constructor !== BinarySearchTree) {
       throw new Error('InputError: argument must be a BinarySearchTree');
@@ -65,6 +72,23 @@ class BinarySearchTree {
     if (node.right) {
       this[_inOrderWalk](node.right, cb);
     }
+  }
+
+  /***********************************
+  *    FIND MAX NODE ANY BIN TREE    *
+  ************************************/
+  static findMaxBinaryTree(tree) {
+    let max = tree.root.value;
+
+    let compare = (node) => {
+      if (node.value > max) {
+        max = node.value;
+      }
+    };
+
+    this.prototype[_inOrderWalk](tree.root, compare);
+
+    return max;
   }
 
   static findMin(node) {
