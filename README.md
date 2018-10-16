@@ -7,7 +7,7 @@ Algorithm to reverse an array using ES6 and without using any built-in methods
 Write a function called `reverseArray` which takes an array as an argument. Without utilizing any of the built-in methods available to your language, return the provided array argument with elements in reversed order.
 
 ## Solution
-<img src="./assets/array_reverse.jpg" width="400">
+<img src="./01-array-reverse/assets/array_reverse.jpg" width="400">
 
 # Insert and shift middle index of array
 Shifts all items after the middle index and inserts an item into the gap
@@ -16,7 +16,7 @@ Shifts all items after the middle index and inserts an item into the gap
 Write a function called `insertShiftArray` which takes in an array and the value to be added. Without utilizing any of the built-in methods available to your language, return an array with the new value added at the middle index.
 
 ## Solution
-<img src="./assets/array_shift.jpg" width="400">
+<img src="./02-array-shift/assets/array_shift.jpg" width="400">
 
 # Binary Search
 Binary search in a sorted 1D array
@@ -25,8 +25,8 @@ Binary search in a sorted 1D array
 Write a function called `binarySearch` which takes in 2 parameters: a sorted array and the search key. Without utilizing any of the built-in methods available to your language, return the index of the array’s element that is equal to the search key, or -1 if the element does not exist.
 
 ## Solution
-<img src="./assets/array_binary_search1.jpg" width="400">
-<img src="./assets/array_binary_search2.jpg" width="400">
+<img src="./03-array-binary-search/assets/array_binary_search1.jpg" width="400">
+<img src="./03-array-binary-search/assets/array_binary_search2.jpg" width="400">
 
 # Linked List
 Data structure for a singly-linked list
