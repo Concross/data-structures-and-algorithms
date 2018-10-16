@@ -1,7 +1,7 @@
 {
-  "name": "trees",
+  "name": "graphs",
   "version": "1.0.0",
-  "description": "Exploring trees",
+  "description": "Exploring graphs",
   "main": "index.js",
   "directories": {
     "lib": "lib",
