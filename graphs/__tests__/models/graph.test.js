@@ -47,3 +47,24 @@ describe('Graph addVertex method tests', () => {
     expect(graph.vertices['a']).not.toEqual(['d', 'c', 'b']);
   });
 });
+
+describe('Graph breadthFirstTraversal tests', () => {
+
+  test('should throw an error if now vertex was passed', () => {
+    let graph = new Graph();
+
+    expect(() => {
+      graph.breadthFirstTraversal();
+    }).toThrow();
+  });
+
+  test('should return an array', () => {
+    let graph = new Graph();
+
+    graph.addVertex('a');
+
+    let actual = graph.breadthFirstTraversal('a');
+
+    expect(actual).toBeInstanceOf(Array);
+  });
+});
