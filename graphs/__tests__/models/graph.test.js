@@ -47,3 +47,57 @@ describe('Graph addVertex method tests', () => {
     expect(graph.vertices['a']).not.toEqual(['d', 'c', 'b']);
   });
 });
+
+describe('Graph breadthFirstTraversal tests', () => {
+
+  test('should throw an error if now vertex was passed', () => {
+    let graph = new Graph();
+
+    expect(() => {
+      graph.breadthFirstTraversal();
+    }).toThrow();
+  });
+
+  test('should return an array', () => {
+    let graph = new Graph();
+
+    graph.addVertex('a', []);
+
+    let actual = graph.breadthFirstTraversal('a');
+
+    expect(actual).toBeInstanceOf(Array);
+  });
+
+  test('should return a breadth-first array of visited vertices', () => {
+    let graph = new Graph();
+
+    graph.vertices = {
+      'a': ['b', 'c', 'd'],
+      'b': ['a'],
+      'c': ['a', 'd'],
+      'd': ['a', 'c'],
+    };
+
+    let actual = graph.breadthFirstTraversal('a');
+
+    expect(actual).toEqual(['a', 'b', 'c', 'd']);
+  });
+
+  test('should pass test graph', () => {
+    let graph = new Graph();
+
+    graph.vertices = {
+      'pandora': ['arendelle'],
+      'arendelle': ['metroville', 'monstropolis'],
+      'metroville': ['narnia', 'naboo', 'monstropolis', 'arendelle'],
+      'monstropolis': ['arendelle', 'metroville', 'naboo'],
+      'narnia': ['naboo', 'metroville'],
+      'naboo': ['narnia', 'metroville', 'monstropolis'],
+    };
+
+    let actual = graph.breadthFirstTraversal('pandora');
+    let expected = ['pandora', 'arendelle', 'metroville', 'monstropolis', 'narnia', 'naboo'];
+
+    expect(actual).toEqual(expected);
+  });
+});
