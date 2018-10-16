@@ -20,7 +20,25 @@ class Graph {
     }
 
     let visited = [];
+    let traversalQueue = [];
 
+    traversalQueue.push(vertex);
+
+    while (traversalQueue.length) {
+      let visitedVertex = traversalQueue.shift();
+
+      if (!visited.includes(visitedVertex)) {
+        visited.push(visitedVertex);
+      }
+
+      this.vertices[visitedVertex].forEach(neighbor => {
+
+        if (!visited.includes(neighbor)) {
+          traversalQueue.push(neighbor);
+        }
+      });
+    }
+    console.log(visited);
     return visited;
   }
 }
