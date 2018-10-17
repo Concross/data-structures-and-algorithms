@@ -27,7 +27,6 @@ class Graph {
 
       msg += '\n';
     }
-
     console.log(msg);
   }
 }

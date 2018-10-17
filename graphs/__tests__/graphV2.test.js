@@ -61,5 +61,29 @@ describe('Graph 2.0 tests', () => {
       actual = graph.adjList.get('b').get('a');
       expect(actual).toBe(1);
     });
+
+    test('should add a weighted edge when other edges already exist', () => {
+      let graph = new Graph();
+
+      let vertices = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+      vertices.forEach(vertex => {
+        graph.adjList.set(vertex, new Map());
+      });
+
+      graph.addEdge('a', 'd', 1);
+      graph.addEdge('d', 'e', 2);
+      graph.addEdge('e', 'g', 3);
+      graph.addEdge('d', 'f', 4);
+      graph.addEdge('e', 'f', 5);
+      graph.addEdge('a', 'f', 6);
+      graph.addEdge('f', 'b', 7);
+      graph.addEdge('f', 'c', 8);
+      graph.addEdge('c', 'b', 9);
+      graph.addEdge('a', 'b', 10);
+
+      graph.printAdjList();
+
+    });
   });
 });
