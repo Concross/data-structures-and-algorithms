@@ -1,19 +1,19 @@
 'use strict';
 
-const Graph = require('../lib/graphV2');
+const WeightedGraph = require('../lib/weightedGraph');
 
-describe('Graph 2.0 tests', () => {
+describe('WeightedGraph 2.0 tests', () => {
 
-  describe('Graph 2.0 constructor tests', () => {
+  describe('WeightedGraph 2.0 constructor tests', () => {
 
-    test('should instantiate an object as an instance of Graph', () => {
-      let graph = new Graph();
+    test('should instantiate an object as an instance of WeightedGraph', () => {
+      let graph = new WeightedGraph();
 
-      expect(graph).toBeInstanceOf(Graph);
+      expect(graph).toBeInstanceOf(WeightedGraph);
     });
 
     test('should instantiate an adjacency list as a map', () => {
-      let graph = new Graph();
+      let graph = new WeightedGraph();
 
       let actual = graph.adjList;
 
@@ -21,10 +21,10 @@ describe('Graph 2.0 tests', () => {
     });
   });
 
-  describe('Graph 2.0 addVertex tests', () => {
+  describe('WeightedGraph 2.0 addVertex tests', () => {
 
     test('should add a vertex to the adjacency list', () => {
-      let graph = new Graph();
+      let graph = new WeightedGraph();
 
       graph.addVertex('a');
 
@@ -32,7 +32,7 @@ describe('Graph 2.0 tests', () => {
     });
 
     test('should set the value of a vertex to be an empty array of edges', () => {
-      let graph = new Graph();
+      let graph = new WeightedGraph();
 
       graph.addVertex('b');
 
@@ -43,10 +43,10 @@ describe('Graph 2.0 tests', () => {
     });
   });
 
-  describe('Graph 2.0 addEdge tests', () => {
+  describe('WeightedGraph 2.0 addEdge tests', () => {
 
     test('should add a weighted edge to the src and dest vertexes in the adjacency list', () => {
-      let graph = new Graph();
+      let graph = new WeightedGraph();
 
       graph.adjList.set('a', new Map());
       graph.adjList.set('b', new Map());
@@ -63,7 +63,7 @@ describe('Graph 2.0 tests', () => {
     });
 
     test('should add a weighted edge when other edges already exist', () => {
-      let graph = new Graph();
+      let graph = new WeightedGraph();
 
       let vertices = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 
@@ -83,7 +83,6 @@ describe('Graph 2.0 tests', () => {
       graph.addEdge('a', 'b', 10);
 
       graph.printAdjList();
-
     });
   });
 });

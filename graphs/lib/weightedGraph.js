@@ -1,6 +1,6 @@
 'use strict';
 
-class Graph {
+class WeightedGraph {
   constructor() {
 
     this.adjList = new Map();
@@ -31,4 +31,4 @@ class Graph {
   }
 }
 
-module.exports = Graph;
+module.exports = WeightedGraph;
