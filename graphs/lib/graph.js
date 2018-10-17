@@ -1,5 +1,6 @@
 'use strict';
 
+// TODO(connor): Rewrite graph to be extendable for weighted graph
 class Graph {
   constructor() {
     this.vertices = {};
@@ -38,7 +39,6 @@ class Graph {
         }
       });
     }
-    console.log(visited);
     return visited;
   }
 }
