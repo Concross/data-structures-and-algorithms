@@ -38,7 +38,6 @@ class Graph {
         }
       });
     }
-    console.log(visited);
     return visited;
   }
 }
