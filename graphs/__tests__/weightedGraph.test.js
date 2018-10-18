@@ -131,7 +131,7 @@ describe('WeightedGraph tests', () => {
     });
   });
 
-  describe('WeightedGraph getEdges tests', () => {
+  describe('WeightedGraph totalWeightOf tests', () => {
 
     test('should return an array with [bool, string]', () => {
       let graph = new WeightedGraph();
@@ -153,8 +153,8 @@ describe('WeightedGraph tests', () => {
       graph.addEdge('c', 'b', 9);
       graph.addEdge('a', 'b', 10);
 
-      let actual = graph.getEdges(['a', 'f', 'c']);
-      let expected = [true, '$14'];
+      let actual = graph.totalWeightOf(['a', 'f', 'c']);
+      let expected = [true, 14];
 
       expect(actual).toEqual(expected);
     });
@@ -179,8 +179,8 @@ describe('WeightedGraph tests', () => {
       graph.addEdge('c', 'b', 9);
       graph.addEdge('a', 'b', 10);
 
-      let actual = graph.getEdges(['a', 'e', 'g']);
-      let expected = [false, '$0'];
+      let actual = graph.totalWeightOf(['a', 'e', 'g']);
+      let expected = [false, 0];
 
       expect(actual).toEqual(expected);
     });
