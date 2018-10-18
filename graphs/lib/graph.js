@@ -41,6 +41,10 @@ class Graph {
     }
     return visited;
   }
+
+  depthFirstTraversal(vertex) {
+
+  }
 }
 
 module.exports = Graph;

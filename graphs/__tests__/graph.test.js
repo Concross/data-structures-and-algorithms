@@ -52,7 +52,7 @@ describe('Graph 1.0 tests', () => {
 
   describe('Graph breadthFirstTraversal tests', () => {
 
-    test('should throw an error if now vertex was passed', () => {
+    test('should throw an error if no vertex was passed', () => {
       let graph = new Graph();
 
       expect(() => {
@@ -101,6 +101,19 @@ describe('Graph 1.0 tests', () => {
       let expected = ['pandora', 'arendelle', 'metroville', 'monstropolis', 'narnia', 'naboo'];
 
       expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('Graph depthFirstTraversal tests', () => {
+
+    test('should return an array', () => {
+      let graph = new Graph();
+
+      graph.addVertex('a', []);
+
+      let actual = graph.depthFirstTraversal('a');
+
+      expect(actual).toBeInstanceOf(Array);
     });
   });
 });
