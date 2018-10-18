@@ -52,7 +52,7 @@ describe('Graph 1.0 tests', () => {
 
   describe('Graph breadthFirstTraversal tests', () => {
 
-    test('should throw an error if now vertex was passed', () => {
+    test('should throw an error if no vertex was passed', () => {
       let graph = new Graph();
 
       expect(() => {
@@ -99,6 +99,54 @@ describe('Graph 1.0 tests', () => {
 
       let actual = graph.breadthFirstTraversal('pandora');
       let expected = ['pandora', 'arendelle', 'metroville', 'monstropolis', 'narnia', 'naboo'];
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('Graph depthFirstTraversal tests', () => {
+
+    test('should return an array', () => {
+      let graph = new Graph();
+
+      graph.addVertex('a', []);
+
+      let actual = graph.depthFirstTraversal('a');
+
+      expect(actual).toBeInstanceOf(Array);
+    });
+
+    test('should return a depth-first array of visited vertices', () => {
+      let graph = new Graph();
+
+      graph.vertices = {
+        'a': ['b', 'c', 'd'],
+        'b': ['a'],
+        'c': ['a', 'd'],
+        'd': ['a', 'c'],
+      };
+
+      let actual = graph.depthFirstTraversal('a');
+
+      expect(actual).toEqual(['a', 'd', 'c', 'b']);
+    });
+
+    test('should pass test graph', () => {
+      let graph = new Graph();
+
+      graph.vertices = {
+        'a': ['b', 'd'],
+        'b': ['a', 'c', 'd'],
+        'c': ['b', 'g'],
+        'd': ['a', 'b', 'e', 'h', 'f'],
+        'e': ['d'],
+        'f': ['d', 'h'],
+        'g': ['c'],
+        'h': ['d', 'f'],
+      };
+
+      let actual = graph.depthFirstTraversal('a');
+      let expected = ['a', 'd', 'f', 'h', 'e', 'b', 'c', 'g'];
 
       expect(actual).toEqual(expected);
     });
