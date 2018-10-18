@@ -23,11 +23,34 @@ class WeightedGraph {
     }
 
     let hasEdge = this.adjList.get(src) && this.adjList.get(src).has(dest);
+
     if (hasEdge) {
       return this.adjList.get(src).get(dest);
-    } else {
-      throw new Error('Input Error: destination vertex is not a direct neighbor of source neigbhor');
     }
+  }
+
+  getEdges(vertices) {
+    let cost = 0;
+
+    let hasPath = vertices.every((vertex, idx, arr) => {
+      let weight;
+      if (arr[idx + 1]) {
+        weight = this.getEdge(vertex, arr[idx + 1]);
+      } else {
+        return true;
+      }
+
+      if (weight) {
+        cost += weight;
+        return true;
+
+      } else {
+        cost = 0;
+        return false;
+      }
+    });
+
+    return [hasPath, `$${cost}`];
   }
 
   printAdjList() {

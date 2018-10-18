@@ -108,16 +108,15 @@ describe('WeightedGraph tests', () => {
       }).toThrow();
     });
 
-    test('should verify that a dest vertex is a direct neighbor of the src vertex or throw an error', () => {
+    test('should return undefined if dest vertex is not a direct neighbor of the src vertex', () => {
       let graph = new WeightedGraph();
 
       graph.adjList.set('a', new Map());
       graph.adjList.set('b', new Map());
       graph.addEdge('a', 'b', 1);
 
-      expect(() => {
-        graph.getEdge('a', 'z');
-      }).toThrow();
+      let actual = graph.getEdge('a', 'z');
+      expect(actual).toBeUndefined();
     });
 
     test('should return the weight of an edge if it exists', () => {
@@ -130,6 +129,60 @@ describe('WeightedGraph tests', () => {
       let actual = graph.getEdge('a', 'b');
       expect(actual).toBe(1);
     });
+  });
 
+  describe('WeightedGraph getEdges tests', () => {
+
+    test('should return an array with [bool, string]', () => {
+      let graph = new WeightedGraph();
+
+      let vertices = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+      vertices.forEach(vertex => {
+        graph.adjList.set(vertex, new Map());
+      });
+
+      graph.addEdge('a', 'd', 1);
+      graph.addEdge('d', 'e', 2);
+      graph.addEdge('e', 'g', 3);
+      graph.addEdge('d', 'f', 4);
+      graph.addEdge('e', 'f', 5);
+      graph.addEdge('a', 'f', 6);
+      graph.addEdge('f', 'b', 7);
+      graph.addEdge('f', 'c', 8);
+      graph.addEdge('c', 'b', 9);
+      graph.addEdge('a', 'b', 10);
+
+      let actual = graph.getEdges(['a', 'f', 'c']);
+      let expected = [true, '$14'];
+
+      expect(actual).toEqual(expected);
+    });
+
+    test('should return an array with [false, "$0"] if a direct flight cannot be made', () => {
+      let graph = new WeightedGraph();
+
+      let vertices = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+      vertices.forEach(vertex => {
+        graph.adjList.set(vertex, new Map());
+      });
+
+      graph.addEdge('a', 'd', 1);
+      graph.addEdge('d', 'e', 2);
+      graph.addEdge('e', 'g', 3);
+      graph.addEdge('d', 'f', 4);
+      graph.addEdge('e', 'f', 5);
+      graph.addEdge('a', 'f', 6);
+      graph.addEdge('f', 'b', 7);
+      graph.addEdge('f', 'c', 8);
+      graph.addEdge('c', 'b', 9);
+      graph.addEdge('a', 'b', 10);
+
+      let actual = graph.getEdges(['a', 'e', 'g']);
+      let expected = [false, '$0'];
+
+      expect(actual).toEqual(expected);
+    });
   });
 });
