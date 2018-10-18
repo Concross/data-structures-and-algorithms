@@ -124,5 +124,10 @@ Data structure for a binary search tree
 
 # Graphs
 
-# Breadth First Traversal
+## Breadth First Traversal
 - `breadthFirstTraversal(vertex)` accepts a vertex value and performs a breadth first traversal from that starting vertex, outputting to the console (and returning) an array of vertices in the order they were visited.
+
+# Weighted Graph
+## Methods
+- `getEdge(src, dest)` accepts a source vertex and destination vertex and returns the weight of the edge between them if it exists, otherwise returns undefined
+- `getEdges(vertices)` accepts an array of vertices and resolves down to an array `[hasPath, cost]` where `hasPath` is a boolean value representing whether a path exists along the given vertices and `cost` is the total cost of the weights along that path. If there is no path `getEdges(vertices)` returns `[false, $0]`
