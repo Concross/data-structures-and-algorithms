@@ -44,6 +44,33 @@ class Graph {
 
   depthFirstTraversal(vertex) {
 
+    let visited = [];
+    let stack = [];
+
+    stack.push(vertex);
+
+    while (stack.length > 0) {
+      let top = stack[stack.length - 1];
+
+      if (!visited.includes(top)) {
+        visited.push(top);
+      }
+
+      let hasUnvisitedChildren = false;
+
+      this.vertices[top].forEach(neighbor => {
+        if (!visited.includes(neighbor)) {
+          hasUnvisitedChildren = true;
+          stack.push(neighbor);
+        }
+      });
+
+      if (!hasUnvisitedChildren) {
+        stack.pop();
+      }
+    }
+
+    return visited;
   }
 }
 

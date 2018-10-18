@@ -115,5 +115,40 @@ describe('Graph 1.0 tests', () => {
 
       expect(actual).toBeInstanceOf(Array);
     });
+
+    test('should return a depth-first array of visited vertices', () => {
+      let graph = new Graph();
+
+      graph.vertices = {
+        'a': ['b', 'c', 'd'],
+        'b': ['a'],
+        'c': ['a', 'd'],
+        'd': ['a', 'c'],
+      };
+
+      let actual = graph.depthFirstTraversal('a');
+
+      expect(actual).toEqual(['a', 'd', 'c', 'b']);
+    });
+
+    test('should pass test graph', () => {
+      let graph = new Graph();
+
+      graph.vertices = {
+        'a': ['b', 'd'],
+        'b': ['a', 'c', 'd'],
+        'c': ['b', 'g'],
+        'd': ['a', 'b', 'e', 'h', 'f'],
+        'e': ['d'],
+        'f': ['d', 'h'],
+        'g': ['c'],
+        'h': ['d', 'f'],
+      };
+
+      let actual = graph.depthFirstTraversal('a');
+      let expected = ['a', 'd', 'f', 'h', 'e', 'b', 'c', 'g'];
+
+      expect(actual).toEqual(expected);
+    });
   });
 });
