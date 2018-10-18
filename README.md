@@ -126,6 +126,8 @@ Data structure for a binary search tree
 
 ## Breadth First Traversal
 - `breadthFirstTraversal(vertex)` accepts a vertex value and performs a breadth first traversal from that starting vertex, outputting to the console (and returning) an array of vertices in the order they were visited.
+## Depth First Traversal
+- `depthFirstTraversal(vertex)` accepts a vertex value and performs a depth first traversal from that starting vertex, returning an array of vertices in the order they were visited.
 
 # Weighted Graph
 ## Methods
