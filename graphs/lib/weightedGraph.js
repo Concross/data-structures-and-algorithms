@@ -17,6 +17,42 @@ class WeightedGraph {
 
   }
 
+  getEdge(src, dest) {
+    if (!src || !dest) {
+      throw new Error('Input Error: source vertex must be defined in getEdge(src, dest)');
+    }
+
+    let hasEdge = this.adjList.get(src) && this.adjList.get(src).has(dest);
+
+    if (hasEdge) {
+      return this.adjList.get(src).get(dest);
+    }
+  }
+
+  getEdges(vertices) {
+    let cost = 0;
+
+    let hasPath = vertices.every((vertex, idx, arr) => {
+      let weight;
+      if (arr[idx + 1]) {
+        weight = this.getEdge(vertex, arr[idx + 1]);
+      } else {
+        return true;
+      }
+
+      if (weight) {
+        cost += weight;
+        return true;
+
+      } else {
+        cost = 0;
+        return false;
+      }
+    });
+
+    return [hasPath, `$${cost}`];
+  }
+
   printAdjList() {
     let msg = ``;
     for (let [vertex, value] of this.adjList) {
