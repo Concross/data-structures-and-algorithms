@@ -17,6 +17,12 @@ class WeightedGraph {
 
   }
 
+  getEdge(src, dest) {
+    if (!src || !dest) {
+      throw new Error('Input Error: source vertex must be defined in getEdge(src, dest)');
+    }
+  }
+
   printAdjList() {
     let msg = ``;
     for (let [vertex, value] of this.adjList) {

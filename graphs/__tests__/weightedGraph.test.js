@@ -2,9 +2,9 @@
 
 const WeightedGraph = require('../lib/weightedGraph');
 
-describe('WeightedGraph 2.0 tests', () => {
+describe('WeightedGraph tests', () => {
 
-  describe('WeightedGraph 2.0 constructor tests', () => {
+  describe('WeightedGraph constructor tests', () => {
 
     test('should instantiate an object as an instance of WeightedGraph', () => {
       let graph = new WeightedGraph();
@@ -21,7 +21,7 @@ describe('WeightedGraph 2.0 tests', () => {
     });
   });
 
-  describe('WeightedGraph 2.0 addVertex tests', () => {
+  describe('WeightedGraph addVertex tests', () => {
 
     test('should add a vertex to the adjacency list', () => {
       let graph = new WeightedGraph();
@@ -43,7 +43,7 @@ describe('WeightedGraph 2.0 tests', () => {
     });
   });
 
-  describe('WeightedGraph 2.0 addEdge tests', () => {
+  describe('WeightedGraph addEdge tests', () => {
 
     test('should add a weighted edge to the src and dest vertexes in the adjacency list', () => {
       let graph = new WeightedGraph();
@@ -83,6 +83,29 @@ describe('WeightedGraph 2.0 tests', () => {
       graph.addEdge('a', 'b', 10);
 
       graph.printAdjList();
+    });
+  });
+
+  describe('WeightedGraph getEdge method tests', () => {
+
+    test('should verify that a src vertex is defined and throw an error if not', () => {
+      let graph = new WeightedGraph();
+
+      expect(() => {
+        graph.getEdge();
+      }).toThrow();
+    });
+
+    test('should verify that a dest vertex is defined and throw an error if not', () => {
+      let graph = new WeightedGraph();
+
+      graph.adjList.set('a', new Map());
+      graph.adjList.set('b', new Map());
+      graph.addEdge('a', 'b', 1);
+
+      expect(() => {
+        graph.getEdge('a');
+      }).toThrow();
     });
   });
 });
