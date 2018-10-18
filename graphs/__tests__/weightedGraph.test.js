@@ -107,5 +107,29 @@ describe('WeightedGraph tests', () => {
         graph.getEdge('a');
       }).toThrow();
     });
+
+    test('should verify that a dest vertex is a direct neighbor of the src vertex or throw an error', () => {
+      let graph = new WeightedGraph();
+
+      graph.adjList.set('a', new Map());
+      graph.adjList.set('b', new Map());
+      graph.addEdge('a', 'b', 1);
+
+      expect(() => {
+        graph.getEdge('a', 'z');
+      }).toThrow();
+    });
+
+    test('should return the weight of an edge if it exists', () => {
+      let graph = new WeightedGraph();
+
+      graph.adjList.set('a', new Map());
+      graph.adjList.set('b', new Map());
+      graph.addEdge('a', 'b', 1);
+
+      let actual = graph.getEdge('a', 'b');
+      expect(actual).toBe(1);
+    });
+
   });
 });

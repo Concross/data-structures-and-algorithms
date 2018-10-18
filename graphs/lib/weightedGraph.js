@@ -21,6 +21,13 @@ class WeightedGraph {
     if (!src || !dest) {
       throw new Error('Input Error: source vertex must be defined in getEdge(src, dest)');
     }
+
+    let hasEdge = this.adjList.get(src) && this.adjList.get(src).has(dest);
+    if (hasEdge) {
+      return this.adjList.get(src).get(dest);
+    } else {
+      throw new Error('Input Error: destination vertex is not a direct neighbor of source neigbhor');
+    }
   }
 
   printAdjList() {
