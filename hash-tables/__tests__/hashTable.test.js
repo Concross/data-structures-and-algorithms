@@ -60,4 +60,55 @@ describe('HashTable tests', () => {
       }
     });
   });
+
+  describe('set method', () => {
+    test('should throw error if not passed both parameters', () => {
+      const hash = new HashTable(5);
+
+      expect(() => {
+        hash.set();
+      }).toThrow();
+
+      expect(() => {
+        hash.set('key');
+      }).toThrow();
+
+      expect(() => {
+        hash.set(1);
+      }).toThrow();
+    });
+
+    test('should throw error if key is not a string', () => {
+      const hash = new HashTable(5);
+
+      expect(() => {
+        hash.set(1, 0);
+      }).toThrow();
+    });
+
+    test('should NOT throw error if parameters are valid', () => {
+      const hash = new HashTable(5);
+
+      expect(() => {
+        hash.set('connor', 1);
+      }).not.toThrow();
+    });
+
+    test('should run hash method on key', () => {
+      const hashTable = new HashTable(5);
+      hashTable.hash = jest.fn();
+
+      hashTable.set('connor', 1);
+
+      expect(hashTable.hash).toHaveBeenCalled();
+    });
+
+    test('should place a value into a bucket', () => {
+      const hashTable = new HashTable(5);
+
+      hashTable.set('connor', 1);
+
+      expect(hashTable.buckets[0]).toEqual({'connor': 1});
+    });
+  });
 });
