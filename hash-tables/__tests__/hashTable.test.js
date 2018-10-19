@@ -7,6 +7,24 @@ describe('HashTable tests', () => {
     expect(hashTable).toBeInstanceOf(HashTable);
   });
 
+  test('constructor should create a bucket storage array of the given length', () => {
+    const bucketCount = 5;
+    const hashTable = new HashTable(bucketCount);
+
+    let actual = hashTable.buckets.length;
+
+    expect(actual).toBe(bucketCount);
+  });
+
+  test('bucket should contain null values when instantiated', () => {
+    const bucketCount = 5;
+    const hashTable = new HashTable(bucketCount);
+
+    hashTable.buckets.forEach(bucket => {
+      expect(bucket).toBeNull();
+    });
+  });
+
   test('hash method tests', () => {
     const hashTable = new HashTable(5);
     const hash = hashTable.hash;
