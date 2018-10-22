@@ -193,4 +193,33 @@ describe('HashTable tests', () => {
       expect(hashTable.buckets[0]).toBeNull();
     });
   });
+
+  describe('serialize method', () => {
+    test('should return a string', () => {
+      const hashTable = new HashTable(5);
+      const stringified = hashTable.stringify();
+
+      expect(typeof stringified).toBe('string');
+    });
+
+    test('should match a string version of the hash table', () => {
+      const hashTable = new HashTable(5);
+      const stringified = hashTable.stringify();
+      const expected = '{"bucketCount":5,"buckets":[null,null,null,null,null]}';
+
+      expect(stringified).toEqual(expected);
+    });
+
+    test('should match a more complex string version of the hash table', () => {
+      const hashTable = new HashTable(5);
+      hashTable.buckets[0] = {'connor': true};
+      hashTable.buckets[1] = {'sharon': true};
+      hashTable.buckets[3] = {'alex': 42};
+
+      const stringified = hashTable.stringify();
+      const expected = '{"bucketCount":5,"buckets":[{"connor":true},{"sharon":true},null,{"alex":42},null]}';
+
+      expect(stringified).toEqual(expected);
+    });
+  });
 });

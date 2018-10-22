@@ -37,6 +37,10 @@ class HashTable {
 
     this.buckets[hashedKey] = null;
   }
+
+  stringify() {
+    return JSON.stringify(this);
+  }
 }
 
 module.exports = HashTable;
