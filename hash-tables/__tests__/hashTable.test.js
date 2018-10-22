@@ -153,4 +153,44 @@ describe('HashTable tests', () => {
       expect(actual).toBe(expected);
     });
   });
+
+  describe('remove method', () => {
+    test('should throw error if passed key is not a string', () => {
+      const hashTable = new HashTable(5);
+      hashTable.buckets[0] = {'connor': 1};
+
+      const badArgs = [[], {}, true, 0, null, undefined];
+
+      badArgs.forEach(arg => {
+        expect(() => {
+          hashTable.remove(arg);
+        }).toThrow();
+      });
+    });
+
+    test('should not throw an error if passed key is a string', () => {
+      const hashTable = new HashTable(4);
+
+      const goodArgs = ['1', 'true', 'connor', 'key'];
+      goodArgs.forEach((arg, i) => {
+        hashTable.buckets[i] = {[arg]: true};
+      });
+
+
+      goodArgs.forEach(arg => {
+        expect(() => {
+          hashTable.remove(arg);
+        }).not.toThrow();
+      });
+    });
+
+    test('should remove the key-value pair from the bucket, replacing it with null', () => {
+      const hashTable = new HashTable(5);
+      hashTable.buckets[0] = {'connor': 1};
+
+      hashTable.remove('connor');
+
+      expect(hashTable.buckets[0]).toBeNull();
+    });
+  });
 });

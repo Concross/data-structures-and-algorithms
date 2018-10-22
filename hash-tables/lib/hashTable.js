@@ -29,6 +29,14 @@ class HashTable {
     const buckets = this.buckets;
     return buckets[hashedKey][key];
   }
+
+  remove(key) {
+    if (typeof key !== 'string') {throw new Error('remove(key) requires a string representing a key');}
+
+    const hashedKey = this.hash(key);
+
+    this.buckets[hashedKey] = null;
+  }
 }
 
 module.exports = HashTable;
