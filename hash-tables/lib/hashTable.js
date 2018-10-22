@@ -41,6 +41,21 @@ class HashTable {
   stringify() {
     return JSON.stringify(this);
   }
+
+  static deserialize(hTable) {
+    if (typeof hTable !== 'string') {throw new Error('deserialize(hTable) requires a string representing a stringified hash table');}
+
+    try {
+      let temp = JSON.parse(hTable);
+
+      const result = new HashTable(temp.bucketCount);
+      result.buckets = temp.buckets;
+
+      return result;
+    } catch (e) {
+      throw new Error('unable to parse string into a hash table');
+    }
+  }
 }
 
 module.exports = HashTable;

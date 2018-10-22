@@ -113,7 +113,6 @@ describe('HashTable tests', () => {
   });
 
   describe('get method', () => {
-
     test('should throw error if passed key is not a string', () => {
       const hashTable = new HashTable(5);
       hashTable.buckets[0] = {'connor': 1};
@@ -220,6 +219,38 @@ describe('HashTable tests', () => {
       const expected = '{"bucketCount":5,"buckets":[{"connor":true},{"sharon":true},null,{"alex":42},null]}';
 
       expect(stringified).toEqual(expected);
+    });
+  });
+
+  describe('deserialize method', () => {
+
+    test('should throw an error if not passed a string', () => {
+      const hashTable = new HashTable(5);
+      const stringified = hashTable.stringify();
+
+      const badArgs = [[], {}, true, 0, null, undefined];
+
+      badArgs.forEach(arg => {
+        expect(() => {
+          HashTable.deserialize(arg);
+        }).toThrow();
+      });
+    });
+
+    test('should throw an error if unable to parse string back into a hash table', () => {
+      const stringified = 'bad hash table';
+
+      expect(() => {
+        HashTable.deserialize(stringified);
+      }).toThrow('unable to parse string into a hash table');
+    });
+
+    test('should return a properly deserialized hash table', () => {
+      const hashTable = new HashTable(5);
+      const stringified = hashTable.stringify();
+
+      let newTable = HashTable.deserialize(stringified);
+      expect(newTable).toBeInstanceOf(HashTable);
     });
   });
 });
