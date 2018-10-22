@@ -20,6 +20,15 @@ class HashTable {
     let hashKey = this.hash(key);
     this.buckets[hashKey] = {[key]: value};
   }
+
+  get(key) {
+    if (typeof key !== 'string') {throw new Error('get(key) requires a string representing a key');}
+
+    const hashedKey = this.hash(key);
+
+    const buckets = this.buckets;
+    return buckets[hashedKey][key];
+  }
 }
 
 module.exports = HashTable;

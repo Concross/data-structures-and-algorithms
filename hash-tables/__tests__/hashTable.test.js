@@ -111,4 +111,46 @@ describe('HashTable tests', () => {
       expect(hashTable.buckets[0]).toEqual({'connor': 1});
     });
   });
+
+  describe('get method', () => {
+
+    test('should throw error if passed key is not a string', () => {
+      const hashTable = new HashTable(5);
+      hashTable.buckets[0] = {'connor': 1};
+
+      const badArgs = [[], {}, true, 0, null, undefined];
+
+      badArgs.forEach(arg => {
+        expect(() => {
+          hashTable.get(arg);
+        }).toThrow();
+      });
+    });
+
+    test('should not throw an error if passed key is a string', () => {
+      const hashTable = new HashTable(4);
+
+      const goodArgs = ['1', 'true', 'connor', 'key'];
+      goodArgs.forEach((arg, i) => {
+        hashTable.buckets[i] = {[arg]: true};
+      });
+
+
+      goodArgs.forEach(arg => {
+        expect(() => {
+          hashTable.get(arg);
+        }).not.toThrow();
+      });
+    });
+
+    test('should return the value of the key in the bucket', () => {
+      const hashTable = new HashTable(5);
+      hashTable.buckets[0] = {'connor': 1};
+
+      let actual = hashTable.get('connor');
+      let expected = 1;
+
+      expect(actual).toBe(expected);
+    });
+  });
 });
