@@ -223,7 +223,6 @@ describe('HashTable tests', () => {
   });
 
   describe('deserialize method', () => {
-
     test('should throw an error if not passed a string', () => {
       const hashTable = new HashTable(5);
       const stringified = hashTable.stringify();
