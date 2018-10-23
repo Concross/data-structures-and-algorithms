@@ -3,7 +3,8 @@ module.exports = (book) => {
     throw new Error('Input Error: input must be a string');
   }
   // remove unnecessary punctuation. 
-  const parsedBook = book.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+  let parsedBook = book.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+  parsedBook = parsedBook.replace(/\s{2,}/g, ' ');
 
   const words = parsedBook.split(' ');
   const result = {};
