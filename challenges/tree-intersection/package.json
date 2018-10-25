@@ -1,0 +1,21 @@
+{
+  "name": "tree-intersection",
+  "version": "1.0.0",
+  "description": "Return the intersection of two binary trees",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "jest": {
+    "verbose": false
+  },
+  "author": "Connor Crossley <cacrossley22@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
