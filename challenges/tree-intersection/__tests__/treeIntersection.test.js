@@ -46,4 +46,19 @@ describe('tree intersection', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  test('should return an empty array for larger trees with now shared values', () => {
+    const tree1 = new BinaryTree(new Node(4));
+    tree1.insert(new Node(9));
+    tree1.insert(new Node(10));
+    tree1.insert(new Node(7));
+    tree1.insert(new Node(5));
+
+    const tree2 = new BinaryTree(new Node(1));
+
+    const actual = treeIntersection(tree1, tree2);
+    const expected = [];
+
+    expect(actual).toEqual(expected);
+  });
 });
