@@ -4,7 +4,7 @@ const Node = require('./node');
 const Queue = require('../../../stacks-and-queues/lib/queue');
 
 const _insertNode = Symbol('insertNode');
-const _inOrderWalk = Symbol('inOrderWalk');
+// const _inOrderWalk = Symbol('inOrderWalk');
 class BinarySearchTree {
   constructor(root) {
     this.root = root || null;
@@ -165,18 +165,18 @@ class BinarySearchTree {
       }
     };
 
-    this.prototype[_inOrderWalk](tree.root, _fizzBuzzNode);
+    this.prototype.inOrderWalk(tree.root, _fizzBuzzNode);
   }
 
-  [_inOrderWalk](node, cb) {
+  inOrderWalk(node, cb) {
     if (node.left) {
-      this[_inOrderWalk](node.left, cb);
+      this.inOrderWalk(node.left, cb);
     }
 
     cb(node);
 
     if (node.right) {
-      this[_inOrderWalk](node.right, cb);
+      this.inOrderWalk(node.right, cb);
     }
   }
 
@@ -216,7 +216,7 @@ class BinarySearchTree {
       }
     };
 
-    this.prototype[_inOrderWalk](tree.root, compare);
+    this.prototype.inOrderWalk(tree.root, compare);
 
     return max;
   }
