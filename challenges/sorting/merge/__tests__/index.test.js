@@ -2,23 +2,23 @@
 
 const mergeSort = require('../index');
 
-describe('Tests for merge sort', () => {
-  test('should take an unsorted array and return a sorted array', () => {
-    let testArr = [23, 42, 9, 15, 3];
-    expect(mergeSort(testArr)).toEqual([3, 9, 15, 23, 42]);
+describe('merge sort', () => {
+  test('should sort an array in numerical order', () => {
+    let test = [42, 35, 17, 23, 999];
+    expect(mergeSort(test)).toEqual([17, 23, 35, 42, 999]);
 
   });
 
-  test('should take an unsorted array return the search in reverse order based on second arg', () => {
-    let testArr = [23, 42, 9, 15, 3];
-    let newCompare = (a, b) => a > b;
-    let actual = mergeSort(testArr, newCompare);
-    expect(actual).toEqual([42, 23, 15, 9, 3]);
+  test('should sort an array based on a provided comparator', () => {
+    let test = [42, 35, 17, 23, 999];
+    let comparator = (a, b) => a > b;
+    let actual = mergeSort(test, comparator);
+    expect(actual).toEqual([999, 42, 35, 23, 17]);
 
   });
-  test('should take an unsorted array of strings and return them in alphebetical order', () => {
-    let testArr = ['hello', 'friend', 'again'];
-    let actual = mergeSort(testArr);
+  test('should sort an array of strings', () => {
+    let test = ['hello', 'friend', 'again'];
+    let actual = mergeSort(test);
     expect(actual).toEqual(['again', 'friend', 'hello']);
   });
 });

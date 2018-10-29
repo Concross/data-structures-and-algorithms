@@ -11,8 +11,8 @@ describe('Tests for selection sort', () => {
 
   test('should take an unsorted array return in an order based on comparator', () => {
     const testArr = [42, 35, 17, 23, 999];
-    const newCompare = (a, b) => a > b;
-    const actual = selectionSort(testArr, newCompare);
+    const comparator = (a, b) => a > b;
+    const actual = selectionSort(testArr, comparator);
     const expected = [999, 42, 35, 23, 17];
     expect(actual).toEqual(expected);
   });

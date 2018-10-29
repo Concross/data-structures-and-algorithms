@@ -7,21 +7,21 @@
 
 const insertionSort = require('../index');
 
-describe('Tests for insertion sort', () => {
+describe('insertion sort', () => {
   const testArr = [42, 35, 17, 23, 999];
 
-  test('should take an unsorted array and return a sorted array', () => {
+  test('should sort an array in numerical order', () => {
     expect(insertionSort(testArr)).toEqual([17, 23, 35, 42, 999]);
   });
 
-  test('should take an unsorted array return the search in reverse order based on second arg', () => {
-    const newCompare = (a, b) => a > b;
-    const actual = insertionSort(testArr, newCompare);
+  test('should sort an array based on a given comparator', () => {
+    const comparator = (a, b) => a > b;
+    const actual = insertionSort(testArr, comparator);
     expect(actual).toEqual([999, 42, 35, 23, 17]);
 
   });
-  test('should take an unsorted array of strings and return them in alphebetical order', () => {
-    const actual = insertionSort(['hello', 'friend', 'again']);
-    expect(actual).toEqual(['again', 'friend', 'hello']);
+  test('should sort an array of strings', () => {
+    const actual = insertionSort(['connor', 'sharon', 'tim', 'alex']);
+    expect(actual).toEqual(['alex', 'connor', 'sharon', 'tim']);
   });
 });
