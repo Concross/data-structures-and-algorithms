@@ -1,6 +1,6 @@
 const insertionSort = require('../insertion/index.js');
 
-const timsort = arr => {
+const timsort = (arr) => {
   let runs = [];
   let sortedRuns = [];
   let sortedArray = [];
