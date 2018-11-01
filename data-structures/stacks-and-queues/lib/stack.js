@@ -1,6 +1,6 @@
 'use strict';
 
-const LinkedList = require('../../linked-lists/lib/linkedList');
+const LinkedList = require('../../linked-lists/javascript/lib/linkedList');
 
 class Stack {
   constructor(serializedStack) {

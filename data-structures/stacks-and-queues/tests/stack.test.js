@@ -1,7 +1,7 @@
 'use strict';
 
 const Stack = require('../lib/stack');
-const LinkedList = require('../../linked-lists/lib/linkedList');
+const LinkedList = require('../../linked-lists/javascript/lib/linkedList');
 
 describe('Stack constructor tests', () => {
   it('should construct an instance of the Stack class', () => {

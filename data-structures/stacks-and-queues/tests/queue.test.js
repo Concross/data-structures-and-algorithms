@@ -1,7 +1,7 @@
 'use strict';
 
 const Queue = require('../lib/queue');
-const LinkedList = require('../../linked-lists/lib/linkedList');
+const LinkedList = require('../../linked-lists/javascript/lib/linkedList');
 
 describe('Queue constructor tests', () => {
   let queue = new Queue();
