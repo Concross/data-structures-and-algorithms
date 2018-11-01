@@ -2,6 +2,7 @@ module.exports = (tree1, tree2) => {
   if (!tree2) {
     throw new Error('INPUT ERROR: must pass two trees into treeIntersection(tree1, tree2)');
   }
+
   const result = [];
   const intersection = {};
 
