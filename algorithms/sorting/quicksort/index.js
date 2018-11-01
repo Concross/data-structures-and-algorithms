@@ -10,7 +10,6 @@ const quicksort = (unsorted, comparator) => {
   let pivot = unsorted.pop();
   let left = [];
   let right = [];
-  let result = [];
 
   unsorted.forEach(item => {
     if (compare(item, pivot)) {
