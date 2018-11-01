@@ -32,9 +32,9 @@ class LinkedList {
     // }
 
     if (this.tail) {
-      this.tail = this.tail.next = new Node(value, null);
+      this.tail = this.tail.next = new Node(value);
     } else {
-      this.head = this.tail = new Node(value, null);
+      this.head = this.tail = new Node(value);
     }
 
     this.length++;
