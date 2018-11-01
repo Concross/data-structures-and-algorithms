@@ -2,15 +2,16 @@ module.exports = (book) => {
   if (typeof book !== 'string') {
     throw new Error('Input Error: input must be a string');
   }
-  // remove unnecessary punctuation. 
-  let parsedBook = book.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-  parsedBook = parsedBook.replace(/\s{2,}/g, ' ');
+
+  // remove unnecessary punctuation and then remove extra spaces.
+  const parsedBook = book.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').replace(/\s{2,}/g, ' ');
 
   const words = parsedBook.split(' ');
   const result = {};
 
-  for (let i = 0; i < words.length; i++) {
-    let word = words[i].toLowerCase();
+  for (let word of words) {
+    word = word.toLowerCase();
+
     if (result[word]) {
       return word;
     }
