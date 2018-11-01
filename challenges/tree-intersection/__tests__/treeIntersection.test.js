@@ -1,6 +1,6 @@
 const treeIntersection = require('../lib/treeIntersection');
-const BinaryTree = require('../../../trees/lib/models/binarySearchTree');
-const Node = require('../../../trees/lib/models/node');
+const BinaryTree = require('../../../data-structures/trees/lib/models/binarySearchTree');
+const Node = require('../../../data-structures/trees/lib/models/node');
 
 describe('tree intersection', () => {
   test('should throw an error if only one tree is passed', () => {
