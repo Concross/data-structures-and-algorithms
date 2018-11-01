@@ -7,7 +7,6 @@ const _removeLast = Symbol('removeLast');
 
 class LinkedList {
   constructor(listObject) {
-
     try {
       if (listObject) {
         this.head = listObject.head;
@@ -19,20 +18,17 @@ class LinkedList {
         this.tail = null;
         this.length = 0;
       }
+
     } catch (err) {
       throw new Error('LinkedList constructor unable to instantiate new LinkedList object');
     }
   }
 
-  // append is O(1)
+  // append is O(1) when tracking the tail
   append(value) {
-
-    // if (typeof value !== 'number') {
-    //   throw new TypeError('append(val) requires the parameter to be an integer');
-    // }
-
     if (this.tail) {
       this.tail = this.tail.next = new Node(value);
+
     } else {
       this.head = this.tail = new Node(value);
     }
@@ -43,9 +39,11 @@ class LinkedList {
   // prepend is O(1)
   prepend(value) {
     this.head = new Node(value, this.head);
+
     if (!this.tail) {
       this.tail = this.head;
     }
+
     this.length++;
   }
 
@@ -125,6 +123,7 @@ class LinkedList {
   removeItem(targetValue) {
     if (!this.length) {
       throw new Error('No nodes to remove');
+
     } else {
       let curr = this.head;
       let next = curr.next;
